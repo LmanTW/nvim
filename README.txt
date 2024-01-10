@@ -8,6 +8,8 @@
 <S+Right>: Select and go right
 <S+Up>: Jump to the top
 <S+Down>: Jump to the bottom
+<S+C+Up>: Move the current up
+<S+C+Up>: Move the current down
 
 <C+f>: Focus on file explorer (Nvim-Tree)
 
@@ -17,6 +19,8 @@
 <A+Left>: Switch to the previous tab
 <A+Right>: Switch to the next tab
 <A+Down>: Remove current tab
+<A+[>: Move the current tab left
+<A+]>: Move the current tab right
 
 <C+t>: Open / Close terminal
 
