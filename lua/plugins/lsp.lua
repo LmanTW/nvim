@@ -7,8 +7,7 @@ local lsp = {
 	'cssls',
 	'jsonls',
   'lua_ls',
-
-  'volar'
+  'gopls'
 }
 
 --say hello
@@ -30,6 +29,18 @@ for _,item in pairs(lsp) do
     	  }
     	}
 		})
+  elseif (item == 'gopls') then
+    require('lspconfig').gopls.setup({
+      settings = {
+        gopls = {
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
+          gofumpt = true,
+        },
+      },
+    })
   else
   	require('lspconfig')[item].setup({
   	  capabilities = capabilities

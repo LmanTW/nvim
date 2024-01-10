@@ -18,7 +18,32 @@ require('lazy').setup({
 		'm4xshen/autoclose.nvim',
 	  config = true
 	},
-  'alvan/vim-closetag',
+  {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-treesitter.configs').setup({
+        auto_install = true,
+
+        ensure_installed = {
+          'css',
+          'html',
+        },
+
+        highlight = {
+          enable = true,
+          use_languagetree = true,
+        },
+
+        autotag = {
+          enable = true,
+          filetypes = { 'html', 'vue' }
+        },
+
+        indent = { enable = true },
+      })
+    end
+  },
+  'windwp/nvim-ts-autotag',
 
 	-- Theme
   {
@@ -144,7 +169,10 @@ require('lazy').setup({
     'CRAG666/code_runner.nvim',
 		config = function()
 			require('code_runner').setup({
-        mode = 'term'
+        mode = 'term',
+        filetype = {
+          go = 'go run $dir/$fileName'
+        },
 			})
 		end
 	},
