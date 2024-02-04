@@ -7,11 +7,13 @@ cmp.setup({
     end
   },
 	completion = {
-    completeopt = 'menu,menuone,noinsert,preview'
+    completeopt = 'menu,noinsert'
   },
 	mapping = cmp.mapping.preset.insert({
 		['<CR>'] = cmp.mapping.abort(),
-		['<Tab>'] = cmp.mapping.confirm({ select = true })
+		['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    ['<D-]>'] = cmp.mapping.scroll_docs(-4),
+    ['<D-[>'] = cmp.mapping.scroll_docs(4)
   }),
 	preselect = cmp.PreselectMode.None,
   sources = cmp.config.sources({
@@ -23,7 +25,7 @@ cmp.setup({
 	}),
   formatting = {
     format = require('lspkind').cmp_format({
-      maxwidth = 35,
+      maxwidth = 30,
       ellipsis_char = '...'
     })
   }

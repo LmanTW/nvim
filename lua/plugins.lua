@@ -194,8 +194,15 @@ require('lazy').setup({
 		config = function ()
 			require('bigfile').setup({
 				filesize = 2,
-				pattern = { '*' }
+				pattern = { '*' },
+        features = {
+          "lsp",
+          "treesitter",
+          "syntax"
+        }
 			})
 		end
-	}
+	},
+  "dstein64/vim-startuptime",
+  'alec-gibson/nvim-tetris'
 })
