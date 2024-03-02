@@ -17,6 +17,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Instal Plugins
 
+vim.cmd[[colorscheme tokyonight-night]]
+
 require('lazy').setup({
   -- Theme
   {
@@ -37,6 +39,10 @@ require('lazy').setup({
 
     config = function ()
       require('nvim-treesitter.configs').setup({
+        highlight = {
+          enable = true,
+        },
+
         autotag = {
           enable = true,
           trueenable_rename = true,
@@ -56,6 +62,8 @@ require('lazy').setup({
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 
+    event = 'BufEnter',
+
     config = true
   },
 
@@ -63,15 +71,25 @@ require('lazy').setup({
   {
     'hrsh7th/nvim-cmp',
 
-    dependencies = {'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'onsails/lspkind.nvim'}
+    event = 'InsertEnter',
+
+    dependencies = {'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'onsails/lspkind.nvim'},
+
+    config = function ()
+     require('configurations.experimental.plugins.cmp')
+    end
   },
   {
     'dcampos/cmp-snippy',
+
+    event = 'InsertEnter',
 
     dependencies = {'dcampos/nvim-snippy'}
   },
   {
     "Exafunction/codeium.nvim",
+
+    event = 'InsertEnter',
 
     dependencies = {'nvim-lua/plenary.nvim'},
 
@@ -88,6 +106,8 @@ require('lazy').setup({
   },
   {
     'windwp/nvim-ts-autotag',
+
+    event = 'InsertEnter',
 
     config = true
   },
@@ -119,13 +139,24 @@ require('lazy').setup({
       require('nvim-tree').setup({
       	sort_by = 'case_sensitive',
 
+        filesystem_watchers = {
+          ignore_dirs = {
+            'node_modules'
+          }
+        },
+
+        filters = {
+				  custom = { '.DS_Store' }
+				},
+
 				view = {
           width = 25
 				},
 
         git = {
-          enable = true,
-          ignore = false
+          enable = false,
+
+          -- ignore = false
         }
       })
     end
@@ -133,12 +164,12 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
 
+    keys = {'<C-g>'},
+
     dependencies = {'nvim-lua/plenary.nvim'},
 
     config = function ()
-      require('telescope').setup({
-
-      })
+      require('telescope').setup({})
     end
   },
 
@@ -161,15 +192,15 @@ require('lazy').setup({
 
     dependencies = {'nvim-tree/nvim-web-devicons'},
 
-    event = { "BufEnter" },
-
     config = function ()
       require('lualine').setup({
         options = {
           component_separators = { left = ' ', right = ' '},
           section_separators = { left = ' |', right = '| '},
 
-          theme = 'nightfly'
+          theme = 'nightfly',
+
+          disabled_filetypes = { 'NvimTree' }
         },
 
         sections = {
@@ -190,7 +221,8 @@ require('lazy').setup({
 
 		config = function ()
       require('toggleterm').setup({
-        open_mapping = [[<c-t>]],
+        open_mapping = [[<C-t>]],
+
 				size = 15
 			})
 		end
@@ -201,5 +233,8 @@ require('lazy').setup({
     config = function ()
       require('code_runner').setup({ mode = 'term' })
     end
-  }
+  },
+
+  -- Other
+  'dstein64/vim-startuptime'
 })

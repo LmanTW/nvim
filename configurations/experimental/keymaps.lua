@@ -22,31 +22,41 @@ setKeymap({'n', 'i', 'v'}, '<S-Down>', 'G')
 
 -- Editing 
 
-setKeymap({'n', 'i'}, '<D-x>', '<C-u>', false)
+setKeymap({'n', 'i', 'v'}, '<S-C-Up>', ':m .-2<CR>==')
+setKeymap({'n', 'i', 'v'}, '<S-C-Down>', ':m .+1<CR>==')
+setKeymap({'n', 'i', 'v'}, '<D-x>', '<C-u>', false)
 setKeymap({'n', 'i'}, '<D-d>', 'diw')
 
-setKeymap({'n', 'i', 'v'}, 'y', '"*ygv')
-setKeymap({'n', 'i', 'v'}, 'p', '"*p')
+setKeymap({'n', 'i', 'v'}, '<D-z>', '<Undo>', nil, '<Right>')
+setKeymap({'n', 'v'}, 'y', '"*ygv')
+setKeymap({'n', 'v'}, 'p', '"*p')
 
 setKeymap({'n', 'i'}, '<C-w>', ':w<CR>', nil, '<Right>')
 
 -- Select
 
-setKeymap({'n', 'i'}, '<S-Left>', '<ESC>v')
-setKeymap({'n', 'i'}, '<S-Right>', '<ESC><Right>v')
+setKeymap({'n', 'i'}, '<S-Left>', '<ESC>v', false)
+setKeymap({'n', 'i'}, '<S-Right>', '<ESC><Right>v', false)
 
 -- Open Plugins
 
-setKeymap({'n', 'i'}, '<C-f>', ':NvimTreeFocus<CR>')
-setKeymap({'n', 'i'}, '<C-g>', ':Telescope find_files<CR>')
-setKeymap({'n', 'i'}, '<C-r>', ':RunFile toggleterm<CR>')
+setKeymap({'n', 'i', 'v'}, '<C-f>', ':NvimTreeFocus<CR>')
+setKeymap({'n', 'i', 'v'}, '<C-g>', ':Telescope find_files<CR>')
+setKeymap({'n', 'i', 'v'}, '<C-r>', ':RunFile toggleterm<CR>')
+setKeymap({'n', 'i', 'v'}, '<C-m>', ':RunFile toggleterm<CR>')
+
+vim.keymap.set('n', '<C-v>', require("lsp_lines").toggle)
+vim.keymap.set('i', '<C-v>', require("lsp_lines").toggle)
+vim.keymap.set('v', '<C-v>', require("lsp_lines").toggle)
 
 -- Tab
 
-setKeymap({'n', 'i'}, '<A-Left>', ':BufferPrevious<CR>')
-setKeymap({'n', 'i'}, '<A-Right>', ':BufferNext<CR>')
-setKeymap({'n', 'i'}, '<A-Up>', ':BufferNex<CR>:BufferPrevious<CR>')
-setKeymap({'n', 'i'}, '<A-Down>', ':BufferClose<CR>')
+setKeymap({'n', 'i', 'v'}, '<A-Left>', ':BufferPrevious<CR>')
+setKeymap({'n', 'i', 'v'}, '<A-Right>', ':BufferNext<CR>')
+setKeymap({'n', 'i', 'v'}, '<A-Up>', ':BufferNex<CR>:BufferPrevious<CR>')
+setKeymap({'n', 'i', 'v'}, '“', ':BufferMovePrevious<CR>')
+setKeymap({'n', 'i', 'v'}, '‘', ':BufferMoveNext<CR>')
+setKeymap({'n', 'i', 'v'}, '<A-Down>', ':BufferClose<CR>')
 
 -- Change Mode
 
@@ -61,9 +71,12 @@ vim.keymap.set('v', '<C-c>', '<ESC>')
 
 -- Scroll
 
+setKeymap({'i'}, '<D-Up>', '<ESC>', false)
+setKeymap({'i'}, '<D-Down>', '<ESC>', false)
+
 local mappings = {}
 
-mappings['<D-Up>'] = {'scroll', {'-vim.wo.scroll', 'true', '250', [['circular']]}}
-mappings['<D-Down>'] = {'scroll', { 'vim.wo.scroll', 'true', '250', [['circular']]}}
+mappings['<D-Up>'] = {'scroll', {'-vim.wo.scroll', 'true', '500', [['circular']]}}
+mappings['<D-Down>'] = {'scroll', { 'vim.wo.scroll', 'true', '500', [['circular']]}}
 
 require('neoscroll.config').set_mappings(mappings)

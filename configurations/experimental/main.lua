@@ -18,6 +18,5 @@ vim.diagnostic.config({ update_in_insert = true, virtual_text = false })
 require('configurations.experimental.plugins')
 
 require('configurations.experimental.plugins.lsp')
-require('configurations.experimental.plugins.cmp')
 
 require('configurations.experimental.keymaps')
