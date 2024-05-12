@@ -25,6 +25,8 @@ require('lazy').setup({
         auto_install = true,
 
         ensure_installed = {
+          'javascript',
+
           'css',
           'html',
         },

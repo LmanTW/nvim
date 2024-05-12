@@ -45,9 +45,10 @@ setKeymap({'n', 'i', 'v'}, '<C-g>', ':Telescope find_files<CR>')
 setKeymap({'n', 'i', 'v'}, '<C-r>', ':RunFile toggleterm<CR>')
 setKeymap({'n', 'i', 'v'}, '<C-m>', ':RunFile toggleterm<CR>')
 
-vim.keymap.set('n', '<C-v>', require("lsp_lines").toggle)
-vim.keymap.set('i', '<C-v>', require("lsp_lines").toggle)
-vim.keymap.set('v', '<C-v>', require("lsp_lines").toggle)
+setKeymap({'n', 'i', 'v'}, '<C-z>', ':lua require(\'lsp_lines\').toggle()<CR>')
+setKeymap({'n', 'i', 'v'}, '<C-x>', ':lua vim.lsp.buf.definition()<CR>')
+
+setKeymap({'n', 'i', 'v'}, '<D-e>', ':lua vim.diagnostic.goto_next({})<CR>')
 
 -- Tab
 

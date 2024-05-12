@@ -33,9 +33,9 @@ require('lazy').setup({
   },
 
   -- LSP
-  "neovim/nvim-lspconfig",
+  'neovim/nvim-lspconfig',
   {
-    "nvim-treesitter/nvim-treesitter",
+    'nvim-treesitter/nvim-treesitter',
 
     config = function ()
       require('nvim-treesitter.configs').setup({
@@ -45,15 +45,19 @@ require('lazy').setup({
 
         autotag = {
           enable = true,
+
           trueenable_rename = true,
+
           enable_close = true,
-          enable_close_on_slash = true
-        }
+          enable_close_on_slash = true,
+
+          filetypes = { 'html' }
+        },
       })
     end
   },
   {
-    "williamboman/mason.nvim",
+    'williamboman/mason.nvim',
 
     dependencies = {'williamboman/mason-lspconfig.nvim'},
 
@@ -73,7 +77,7 @@ require('lazy').setup({
 
     event = 'InsertEnter',
 
-    dependencies = {'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'onsails/lspkind.nvim'},
+    dependencies = {'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp-signature-help', 'onsails/lspkind.nvim'},
 
     config = function ()
      require('configurations.experimental.plugins.cmp')
@@ -164,8 +168,6 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
 
-    keys = {'<C-g>'},
-
     dependencies = {'nvim-lua/plenary.nvim'},
 
     config = function ()
@@ -231,10 +233,31 @@ require('lazy').setup({
     'CRAG666/code_runner.nvim',
 
     config = function ()
-      require('code_runner').setup({ mode = 'term' })
+      require('code_runner').setup({
+        mode = 'term',
+
+        filetype = {
+          typescript = "npm run start",
+
+          go = 'go run $dir/$fileName'
+        }
+      })
     end
   },
 
   -- Other
-  'dstein64/vim-startuptime'
+  'dstein64/vim-startuptime',
+  'alec-gibson/nvim-tetris'
+})
+
+vim.api.nvim_create_autocmd("CursorHoldI", {
+  group = vim.api.nvim_create_augroup("cmp_complete_on_space", {}),
+  callback = function()
+    local line = vim.api.nvim_get_current_line()
+    local cursor = vim.api.nvim_win_get_cursor(0)[2]
+
+    if string.sub(line, cursor, cursor + 1) == " " then
+      require("cmp").complete()
+    end
+  end,
 })

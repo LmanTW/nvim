@@ -15,6 +15,8 @@ local lsp = {
 require('mason-lspconfig').setup({ ensure_installed = lsp })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 for _,item in pairs(lsp) do

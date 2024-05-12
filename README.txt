@@ -22,9 +22,13 @@
 <A+[>: Move the current tab left
 <A+]>: Move the current tab right
 
+<C-z>: Toggle lsp lines
+<C+x>: Go to definition
+<D+e>: Go to the next error
+
 <C+t>: Open / Close terminal
 
-- Work on [Normal], [Insert]
+- Works on [Normal], [Insert]
 
 # Normal Mode
 

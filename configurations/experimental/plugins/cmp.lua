@@ -11,8 +11,9 @@ cmp.setup({
   },
 
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', max_item_count = 7 },
+    { name = 'nvim_lsp', max_item_count = 10 },
     { name = 'snippy' },
+    { name = "nvim_lsp_signature_help" },
     { name = "codeium" }
   }, {
     { name = 'buffer' },

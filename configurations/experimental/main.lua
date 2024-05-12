@@ -20,3 +20,11 @@ require('configurations.experimental.plugins')
 require('configurations.experimental.plugins.lsp')
 
 require('configurations.experimental.keymaps')
+
+-- LSP Test
+
+vim.lsp.start({
+  name = 'Boxes',
+
+  cmd = {'boxes-language-server' },
+})
