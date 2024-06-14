@@ -23,8 +23,8 @@ require('configurations.experimental.keymaps')
 
 -- LSP Test
 
-vim.lsp.start({
-  name = 'Boxes',
-
-  cmd = {'boxes-language-server' },
-})
+--vim.lsp.start({
+-- name = 'Boxes',
+--
+--  cmd = {'boxes-language-server' },
+--})

@@ -3,9 +3,12 @@
 local lsp_servers = {
   'eslint', 'tsserver',
   'html', 'cssls',
+  'vuels',
+  'volar',
 
   'lua_ls',
 
+  'csharp_ls',
   'gopls',
 
   'marksman',
@@ -15,10 +18,12 @@ local lsp_servers = {
 local languages = {
   'javascript',
   'typescript',
+  'vue',
 
   'html',
   'css',
 
+  'c_sharp',
   'go',
 
   'markdown',
@@ -29,17 +34,30 @@ require('mason-lspconfig').setup({ ensure_installed = lsp_servers })
 
 -- Install treesitter Languages
 
-require('nvim-treesitter').setup({ ensure_installed = languages })
+require('nvim-treesitter.configs').setup({
+  ensure_installed = languages,
+
+  sync_install = true
+})
 
 -- Set Up Language Servers
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 for _, item in pairs(lsp_servers) do
-  require('lspconfig')[item].setup({
-    capabilities = capabilities
-  })
+  if item == 'csharp_ls' then
+    require('lspconfig').csharp_ls.setup({
+      cmd = { 'csharp-ls' },
+
+      capabilities = capabilities
+    })
+  else
+    require('lspconfig')[item].setup({
+      capabilities = capabilities
+    })
+  end
 end
 
 -- Set Signs

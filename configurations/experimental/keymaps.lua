@@ -31,7 +31,7 @@ setKeymap({'n', 'i', 'v'}, '<D-z>', '<Undo>', nil, '<Right>')
 setKeymap({'n', 'v'}, 'y', '"*ygv')
 setKeymap({'n', 'v'}, 'p', '"*p')
 
-setKeymap({'n', 'i'}, '<C-w>', ':w<CR>', nil, '<Right>')
+setKeymap({'n', 'i'}, '<C-w>', ':w!<CR>', nil, '<Right>')
 
 -- Select
 

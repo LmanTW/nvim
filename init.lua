@@ -5,4 +5,3 @@ package.path = '/Users/lukelin/.config/nvim/?.lua'
 
 -- Experimental Configuration
 require('configurations.experimental.main')
-

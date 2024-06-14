@@ -1,5 +1,4 @@
 -- Install Lazy
-
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if not vim.loop.fs_stat(lazypath) then
@@ -16,8 +15,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Instal Plugins
-
-vim.cmd[[colorscheme tokyonight-night]]
 
 require('lazy').setup({
   -- Theme
@@ -104,14 +101,14 @@ require('lazy').setup({
   {
     'windwp/nvim-autopairs',
 
-    event = 'InsertEnter',
+    event = 'BufReadPre',
 
     config = true
   },
   {
     'windwp/nvim-ts-autotag',
 
-    event = 'InsertEnter',
+    event = 'BufReadPre',
 
     config = true
   },
@@ -239,6 +236,7 @@ require('lazy').setup({
         filetype = {
           typescript = "npm run start",
 
+          cs_harp = 'dotnet run',
           go = 'go run $dir/$fileName'
         }
       })
@@ -246,12 +244,13 @@ require('lazy').setup({
   },
 
   -- Other
-  'dstein64/vim-startuptime',
   'alec-gibson/nvim-tetris'
 })
 
-vim.api.nvim_create_autocmd("CursorHoldI", {
-  group = vim.api.nvim_create_augroup("cmp_complete_on_space", {}),
+vim.cmd[[colorscheme tokyonight-night]]
+
+vim.api.nvim_create_autocmd('CursorHoldI', {
+  group = vim.api.nvim_create_augroup('cmp_complete_on_space', {}),
   callback = function()
     local line = vim.api.nvim_get_current_line()
     local cursor = vim.api.nvim_win_get_cursor(0)[2]
