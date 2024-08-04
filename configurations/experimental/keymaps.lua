@@ -25,11 +25,15 @@ setKeymap({'n', 'i', 'v'}, '<S-Down>', 'G')
 setKeymap({'n', 'i', 'v'}, '<S-C-Up>', ':m .-2<CR>==')
 setKeymap({'n', 'i', 'v'}, '<S-C-Down>', ':m .+1<CR>==')
 setKeymap({'n', 'i', 'v'}, '<D-x>', '<C-u>', false)
-setKeymap({'n', 'i'}, '<D-d>', 'diw')
+setKeymap({'n', 'i', 'v'}, '<D-s>', 'viw')
+setKeymap({'n', 'i', 'v'}, '<D-d>', 'diw')
 
 setKeymap({'n', 'i', 'v'}, '<D-z>', '<Undo>', nil, '<Right>')
 setKeymap({'n', 'v'}, 'y', '"*ygv')
 setKeymap({'n', 'v'}, 'p', '"*p')
+
+setKeymap({'v'}, 'a', '<ESC>:\'<,\'>norm! 0i')
+setKeymap({'v'}, 'r', '<ESC>:\'<,\'>norm! x<CR>gv')
 
 setKeymap({'n', 'i'}, '<C-w>', ':w!<CR>', nil, '<Right>')
 
@@ -46,9 +50,8 @@ setKeymap({'n', 'i', 'v'}, '<C-r>', ':RunFile toggleterm<CR>')
 setKeymap({'n', 'i', 'v'}, '<C-m>', ':RunFile toggleterm<CR>')
 
 setKeymap({'n', 'i', 'v'}, '<C-z>', ':lua require(\'lsp_lines\').toggle()<CR>')
-setKeymap({'n', 'i', 'v'}, '<C-x>', ':lua vim.lsp.buf.definition()<CR>')
-
-setKeymap({'n', 'i', 'v'}, '<D-e>', ':lua vim.diagnostic.goto_next({})<CR>')
+setKeymap({'n', 'i', 'v'}, '<C-x>', ':lua vim.diagnostic.goto_next({})<CR>')
+setKeymap({'n', 'i', 'v'}, '<C-d>', ':lua vim.lsp.buf.definition()<CR>')
 
 -- Tab
 

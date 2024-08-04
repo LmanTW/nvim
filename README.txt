@@ -23,8 +23,8 @@
 <A+]>: Move the current tab right
 
 <C-z>: Toggle lsp lines
-<C+x>: Go to definition
-<D+e>: Go to the next error
+<C+x>: Go to the next error
+<C+d>: Go to definition
 
 <C+t>: Open / Close terminal
 
@@ -48,3 +48,5 @@ p: Paste text
 
 y: Copy text
 p: Paste text
+a: Add stuff to the start of every selected lines
+r: Remove the first character from every selected lines

@@ -1,4 +1,4 @@
-package.path = '/Users/lukelin/.config/nvim/?.lua'
+package.path = '/Users/lmantw/.config/nvim/?.lua'
 
 -- Main Configuration
 -- require('configurations.main.main')

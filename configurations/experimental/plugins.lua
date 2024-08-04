@@ -14,18 +14,37 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.o.termguicolors = true
+
 -- Instal Plugins
 
 require('lazy').setup({
-  -- Theme
-  {
-    'folke/tokyonight.nvim',
+--  {
+--    dev = true,
+--
+--    dir = '/Users/lmantw/Desktop/Programming/themify.nvim',
+--
+--    config = {
+--      'Yazeed1s/minimal.nvim',
+--      'folke/tokyonight.nvim',
+--      'nyoom-engineering/oxocarbon.nvim',
+--      'bluz71/vim-moonfly-colors'
+--    }
+--  },
 
-    lazy = false,
-    priority = 999,
+  {
+    'zaldih/themery.nvim',
+
+    branch = 'simplify-persistence',
+
+    dependencies = {'Yazeed1s/minimal.nvim', 'folke/tokyonight.nvim'},
 
     config = function ()
-       vim.cmd[[colorscheme tokyonight-night]]
+      vim.opt.background = 'dark'
+
+      require('themery').setup({
+        themes = {'minimal-base16', 'tokyonight-night'}
+      })
     end
   },
 
@@ -61,20 +80,42 @@ require('lazy').setup({
     config = true
   },
   {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
 
-    event = 'BufEnter',
+    event = 'BufReadPre',
 
     config = true
+  },
+  {
+    'j-hui/fidget.nvim',
+
+    config = function()
+      require('fidget').setup({
+        notification = {
+          window = {
+            normal_hl = "Comment",      -- Base highlight group in the notification window
+            winblend = 100,             -- Background color opacity in the notification window
+            border = "none",            -- Border around the notification window
+            zindex = 45,                -- Stacking priority of the notification window
+            max_width = 0,              -- Maximum width of the notification window
+            max_height = 0,             -- Maximum height of the notification window
+            x_padding = 2,              -- Padding from right edge of window boundary
+            y_padding = 1,              -- Padding from bottom edge of window boundary
+            align = "bottom",           -- How to align the notification window
+            relative = "editor",        -- What the notification window position is relative to
+          }
+        }
+      })
+    end
   },
 
   -- Auto Complete
   {
     'hrsh7th/nvim-cmp',
 
-    event = 'InsertEnter',
+    event = 'BufReadPre',
 
-    dependencies = {'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp-signature-help', 'onsails/lspkind.nvim'},
+    dependencies = {'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp-signature-help', 'onsails/lspkind.nvim' },
 
     config = function ()
      require('configurations.experimental.plugins.cmp')
@@ -83,14 +124,14 @@ require('lazy').setup({
   {
     'dcampos/cmp-snippy',
 
-    event = 'InsertEnter',
+    event = 'BufReadPre',
 
     dependencies = {'dcampos/nvim-snippy'}
   },
   {
-    "Exafunction/codeium.nvim",
+    'Exafunction/codeium.nvim',
 
-    event = 'InsertEnter',
+    event = 'BufReadPre',
 
     dependencies = {'nvim-lua/plenary.nvim'},
 
@@ -155,9 +196,7 @@ require('lazy').setup({
 				},
 
         git = {
-          enable = false,
-
-          -- ignore = false
+          enable = false
         }
       })
     end
@@ -189,9 +228,23 @@ require('lazy').setup({
   {
     'nvim-lualine/lualine.nvim',
 
-    dependencies = {'nvim-tree/nvim-web-devicons'},
+    dependencies = {'nvim-tree/nvim-web-devicons', 'archibate/lualine-time'},
 
     config = function ()
+      local function time ()
+        local current_time = os.date('*t')
+
+        local hour = current_time.hour
+        local meridiem = 'AM'
+
+        if hour > 12 then
+          hour = hour - 12
+          meridiem = 'PM'
+        end
+
+        return hour .. ':' .. current_time.min .. ' ' .. meridiem
+      end
+
       require('lualine').setup({
         options = {
           component_separators = { left = ' ', right = ' '},
@@ -208,7 +261,7 @@ require('lazy').setup({
           lualine_c = {'diagnostics'},
           lualine_x = {'encoding'},
           lualine_y = {},
-          lualine_z = {'location'}
+          lualine_z = { time }
         },
       })
     end
@@ -217,6 +270,8 @@ require('lazy').setup({
   -- Terminal
 	{
     'akinsho/toggleterm.nvim',
+
+    event = 'BufReadPre',
 
 		config = function ()
       require('toggleterm').setup({
@@ -229,12 +284,14 @@ require('lazy').setup({
   {
     'CRAG666/code_runner.nvim',
 
+    event = 'BufReadPre',
+
     config = function ()
       require('code_runner').setup({
         mode = 'term',
 
         filetype = {
-          typescript = "npm run start",
+          typescript = 'npm run start',
 
           cs_harp = 'dotnet run',
           go = 'go run $dir/$fileName'
@@ -243,11 +300,50 @@ require('lazy').setup({
     end
   },
 
-  -- Other
-  'alec-gibson/nvim-tetris'
-})
+  -- Other 
+  {
+    'iamcco/markdown-preview.nvim',
 
-vim.cmd[[colorscheme tokyonight-night]]
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+
+    build = 'cd app && yarn install',
+
+    init = function()
+      vim.g.mkdp_filetypes = { 'markdown' }
+    end,
+
+    ft = { 'markdown' },
+  },
+  {
+    'gelguy/wilder.nvim',
+
+    config = function()
+      local wilder = require('wilder')
+
+      wilder.setup({
+        modes = { ':', '/' },
+
+        next_key = '<Down>',
+        previous_key = '<Up>',
+        accept_key = '<Right>'
+      })
+
+      wilder.set_option('renderer', wilder.popupmenu_renderer(
+        wilder.popupmenu_border_theme({
+          highlights = { border = 'Normal', },
+          highlighter = wilder.basic_highlighter(),
+
+          border = 'rounded',
+        })
+      ))
+    end
+  },
+  'alec-gibson/nvim-tetris',
+  {
+    'folke/neodev.nvim',
+    config = {}
+  }
+})
 
 vim.api.nvim_create_autocmd('CursorHoldI', {
   group = vim.api.nvim_create_augroup('cmp_complete_on_space', {}),
@@ -255,8 +351,8 @@ vim.api.nvim_create_autocmd('CursorHoldI', {
     local line = vim.api.nvim_get_current_line()
     local cursor = vim.api.nvim_win_get_cursor(0)[2]
 
-    if string.sub(line, cursor, cursor + 1) == " " then
-      require("cmp").complete()
+    if string.sub(line, cursor, cursor + 1) == ' ' then
+      require('cmp').complete()
     end
-  end,
+  end
 })

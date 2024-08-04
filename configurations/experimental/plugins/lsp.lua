@@ -7,23 +7,24 @@ local lsp_servers = {
   'volar',
 
   'lua_ls',
-
-  'csharp_ls',
   'gopls',
+  'rust_analyzer',
 
   'marksman',
-  'jsonls'
+  'jsonls',
+
+  -- Shit:
+
+  'pyright'
 }
 
 local languages = {
-  'javascript',
-  'typescript',
-  'vue',
+  'javascript', 'typescript',
+  'html', 'css',
 
-  'html',
-  'css',
+  'python',
+  'lua',
 
-  'c_sharp',
   'go',
 
   'markdown',
@@ -46,13 +47,15 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-for _, item in pairs(lsp_servers) do
-  if item == 'csharp_ls' then
-    require('lspconfig').csharp_ls.setup({
-      cmd = { 'csharp-ls' },
+for name, item in pairs(lsp_servers) do
+  if name == 'rust_analyzer' then
+    require('lspconfig')['rust-analyzer'] = {
+      capabilities = capabilities,
 
-      capabilities = capabilities
-    })
+      diagnostics = {
+        enable = true
+      }
+    }
   else
     require('lspconfig')[item].setup({
       capabilities = capabilities

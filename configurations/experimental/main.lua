@@ -13,6 +13,12 @@ vim.o.smartcase = true
 
 vim.diagnostic.config({ update_in_insert = true, virtual_text = false })
 
+vim.opt.backupdir = '/Users/lmantw/.local/share/nvim/backup/'
+vim.opt.backup = true
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Require
 
 require('configurations.experimental.plugins')
