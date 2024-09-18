@@ -97,18 +97,27 @@ require('lazy').setup({
 
   --- Completion
   {
+    'ms-jpq/coq.artifacts',
+
+    branch = 'artifacts',
+
+    lazy = true
+  },
+  {
+    'ms-jpq/coq.thirdparty',
+
+    branch = '3p',
+
+    lazy = true
+  },
+  {
     'ms-jpq/coq_nvim',
 
-    dependencies = {
-      { 'ms-jpq/coq.artifacts', branch = 'artifacts' },
-      { 'ms-jpq/coq.thirdparty', branch = '3p' }
-    },
-
-    init = function()
+    config = function()
       require('experimental.plugins.coq').setup()
     end,
 
-    lazy = false
+    event = 'BufRead'
   },
   {
     'Exafunction/codeium.vim',
@@ -116,7 +125,9 @@ require('lazy').setup({
     config = function()
       vim.g.codeium_disable_bindings = 1
       vim.g.codeium_render = false
-    end
+    end,
+
+    lazy = true
   },
 
   --- Editing
@@ -185,7 +196,7 @@ require('lazy').setup({
       Keymaps.set_keymap({'n', 'i', 'v'}, '<A-Right>', ':BufferNext<CR>', 'i')
       Keymaps.set_keymap({'n', 'i', 'v'}, '“', ':BufferMovePrevious<CR>', 'i')
       Keymaps.set_keymap({'n', 'i', 'v'}, '‘', ':BufferMoveNext<CR>', 'i')
-      Keymaps.set_keymap({'n', 'i', 'v'}, '<A-Up>', ':BufferPrevious<CR>:BufferMoveNext<CR>', 'i')
+      Keymaps.set_keymap({'n', 'i', 'v'}, '<A-Up>', ':BufferPrevious<CR>:BufferNext<CR>', 'i')
       Keymaps.set_keymap({'n', 'i', 'v'}, '<A-Down>', ':BufferDelete<CR>', 'i')
     end,
 

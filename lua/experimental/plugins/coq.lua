@@ -7,9 +7,9 @@ function M.setup()
     auto_start = 'shut-up',
 
     clients = {
-      lsp = { enabled = true, short_name = "LSP" },
-      snippets = { enabled = true, short_name = "Snippet" },
-      buffers = { enabled = true, short_name = "Buffer" }
+      lsp = { enabled = true, short_name = 'LSP', weight_adjust = 3 },
+      snippets = { enabled = true, short_name = 'Snippet', weight_adjust = 2 },
+      buffers = { enabled = true, short_name = 'Buffer', weight_adjust = 1 }
     },
 
     completion = {
@@ -23,7 +23,9 @@ function M.setup()
 
     display = {
       pum = {
-        source_context = {'(', ')'}
+        source_context = {'(', ')'},
+
+        y_max_len = 6
       },
 
       ghost_text = {
@@ -57,6 +59,8 @@ function M.setup()
     { src = 'nvimlua', short_name = 'NeoLua' },
     { src = 'codeium', short_name = 'Codeium' },
   })
+
+  vim.cmd(':COQnow -s')
 end
 
 return M
