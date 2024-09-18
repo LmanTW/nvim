@@ -64,7 +64,14 @@ require('lazy').setup({
   {
     'ray-x/lsp_signature.nvim',
 
-    config = {},
+    config = {
+      max_height = 3,
+      max_width = 50,
+
+      hint_enable = false,
+
+      close_timeout = 500
+    },
 
     event = 'BufRead',
   },
@@ -73,7 +80,7 @@ require('lazy').setup({
 
     config = {
       notification = {
-        window = {
+      indow = {
           x_padding = 2,
           y_padding = 1
         }
@@ -113,6 +120,8 @@ require('lazy').setup({
   {
     'ms-jpq/coq_nvim',
 
+    build = ':COQdeps',
+
     config = function()
       require('experimental.plugins.coq').setup()
     end,
@@ -128,7 +137,7 @@ require('lazy').setup({
     end,
 
     lazy = true
-  },
+  }, 
 
   --- Editing
   {

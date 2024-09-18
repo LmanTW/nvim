@@ -25,9 +25,11 @@ mv nvim ~/.config/nvim
 - Navigation -
 
 <Meta-Left>: Jump to the start of the line.
-<Meta-Right>: Jump to the end of the line.
-<Meta-Up>: Jump to the top of the buffer.
+<Shift-Right>: Jump to the end of the line.
+<Shift-Up>: Jump to the top of the buffer.
 <Meta-Down>: Jump to the bottom of the buffer.
+<Control-D>: Goto definition.
+| Stand for "Definition".
 
 - Editing -
 

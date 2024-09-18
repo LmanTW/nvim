@@ -24,6 +24,7 @@ function M.setup()
   M.set_keymap({'n', 'i', 'v'}, '<D-Right>', '$', 'i<Right>')
   M.set_keymap({'n', 'i', 'v'}, '<S-Up>', 'gg', 'i')
   M.set_keymap({'n', 'i', 'v'}, '<S-Down>', 'G', 'i')
+  M.set_keymap({'n', 'i', 'v'}, '<C-d>', ':lua vim.lsp.buf.definition()<CR>', 'i')
 
   --- Editing
   M.set_keymap({'n', 'v'}, '<D-x>', 'i<C-u><ESC>')
