@@ -1,6 +1,6 @@
 local M = {}
 
---- Setup Lualine
+--- Setup LuaLine
 --- @return nil
 function M.setup()
   require('lualine').setup({

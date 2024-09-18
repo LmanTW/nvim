@@ -5,7 +5,7 @@ My Neovim configuration, you can use it to code smoothly without the need to lea
 * [Lazy.nvim](https://github.com/folke/lazy.nvim) | The plugin manager.
 * [Mason.nvim](https://github.com/williamboman/mason.nvim) | The language server manager.
 * [Themify.nvim](https://github.com/LmanTW/themify.nvim) | The colorscheme manager.
-* [coq.nvim.nvim](https://github.com/ms-jpq/coq_nvim) | The completion engine.
+* [cmp.nvim.nvim](github.com/hrsh7th/nvim-cmp) | The completion engine.
 * [nvim-tree.nvim](https://github.com/nvim-tree/nvim-tree.lua?tab=readme-ov-file) | The file explorer.
 * [barbar.nvim](github.com/romgrk/barbar.nvim) | The tabline.
 

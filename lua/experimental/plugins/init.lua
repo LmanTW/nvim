@@ -104,40 +104,27 @@ require('lazy').setup({
 
   --- Completion
   {
-    'ms-jpq/coq.artifacts',
+    'hrsh7th/nvim-cmp',
 
-    branch = 'artifacts',
-
-    lazy = true
-  },
-  {
-    'ms-jpq/coq.thirdparty',
-
-    branch = '3p',
-
-    lazy = true
-  },
-  {
-    'ms-jpq/coq_nvim',
-
-    build = ':COQdeps',
+    dependencies = {
+      { 'hrsh7th/cmp-nvim-lsp', lazy = true },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
+      { 'hrsh7th/cmp-buffer', lazy = true }
+    },
 
     config = function()
-      require('experimental.plugins.coq').setup()
+      require('experimental.plugins.cmp').setup()
     end,
 
     event = 'BufRead'
   },
   {
-    'Exafunction/codeium.vim',
+    'Exafunction/codeium.nvim',
 
-    config = function()
-      vim.g.codeium_disable_bindings = 1
-      vim.g.codeium_render = false
-    end,
+    config = {},
 
-    lazy = true
-  }, 
+    event = 'BufRead'
+  },
 
   --- Editing
   {
@@ -159,7 +146,7 @@ require('lazy').setup({
   {
     'karb94/neoscroll.nvim',
 
-	  config = function ()
+	  config = function()
       local neoscroll = require('neoscroll')
 
       neoscroll.setup({
@@ -181,12 +168,11 @@ require('lazy').setup({
 
   --- Decorations
   {
-    'nvim-tree/nvim-web-devicons',
-
-    lazy = true
-  },
-  {
     'romgrk/barbar.nvim',
+
+    dependencies = {
+      { 'nvim-tree/nvim-web-devicons', lazy = true }
+    },
 
     config = function()
       vim.o.showtabline = 2
@@ -222,11 +208,6 @@ require('lazy').setup({
   },
 
   --- Media Explorer
-  {
-    'nvim-lua/plenary.nvim',
-
-    lazy = true
-  },
   {
     'nvim-tree/nvim-tree.lua',
 
@@ -268,6 +249,10 @@ require('lazy').setup({
   },
   {
     'nvim-telescope/telescope.nvim',
+
+    dependencies = {
+      { 'nvim-lua/plenary.nvim', lazy = true }, 
+    },
 
     init = function()
       vim.keymap.set({'n', 'i', 'v'}, '<C-g>', '<ESC>:Telescope find_files<CR>')
