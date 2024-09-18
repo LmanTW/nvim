@@ -62,20 +62,6 @@ require('lazy').setup({
     event = 'BufRead'
   },
   {
-    'ray-x/lsp_signature.nvim',
-
-    config = {
-      max_height = 3,
-      max_width = 50,
-
-      hint_enable = false,
-
-      close_timeout = 500
-    },
-
-    event = 'BufRead',
-  },
-  {
     'j-hui/fidget.nvim',
 
     config = {
@@ -121,7 +107,11 @@ require('lazy').setup({
   {
     'Exafunction/codeium.nvim',
 
-    config = {},
+    dependencies = {
+      { 'nvim-lua/plenary.nvim', lazy = true }, 
+    },
+
+    config = true,
 
     event = 'BufRead'
   },
@@ -249,10 +239,6 @@ require('lazy').setup({
   },
   {
     'nvim-telescope/telescope.nvim',
-
-    dependencies = {
-      { 'nvim-lua/plenary.nvim', lazy = true }, 
-    },
 
     init = function()
       vim.keymap.set({'n', 'i', 'v'}, '<C-g>', '<ESC>:Telescope find_files<CR>')
