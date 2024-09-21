@@ -1,11 +1,11 @@
 local M = {
-  width = 30
+  width = 35
 }
 
 --- Setup Cmp
 --- @return nil
 function M.setup()
-  local cmp = require('cmp') 
+  local cmp = require('cmp')
 
   local abbr_length
   local kind_length
@@ -45,10 +45,12 @@ function M.setup()
         end
       end
     }
-  }) 
+  })
 
   local servers = require('experimental.plugins.mason').servers
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+  capabilities.textDocument.completion.completionItem.snippetSupport = false
 
   for i = 1, #servers do
     require('lspconfig')[servers[i]].setup({

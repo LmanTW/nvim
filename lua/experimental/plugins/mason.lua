@@ -8,9 +8,13 @@ local M = {
     'lua_ls',
 
     'marksman',
-    'jsonls'
+    'jsonls',
+
+    'zls'
   }
 }
+
+vim.g.zig_fmt_autosave = 0
 
 --- Setup Mason
 --- @return nil

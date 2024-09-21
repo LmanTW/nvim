@@ -8,7 +8,9 @@ local M = {
     'lua',
 
     'markdown',
-    'json'
+    'json',
+
+    'zig'
   }
 }
 

@@ -24,7 +24,9 @@ end
 require('lazy').setup({
   --- Colorscheme Manager
   {
-    'lmantw/themify.nvim',
+    dev = true,
+
+    dir = '/Users/lmantw/Desktop/Programming/themify.nvim',
 
     config = function()
       require('experimental.plugins.themify').setup()
@@ -289,7 +291,9 @@ require('lazy').setup({
         mode = 'term',
 
         filetype = {
-          typescript = 'cd $dir && npm run start'
+          typescript = 'cd $dir && npm run start',
+
+          zig = 'zig run $fileName'
         }
       })
     end,
@@ -309,6 +313,13 @@ require('lazy').setup({
 
     ft = {'markdown'},
     cmd = {'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop'},
+  },
+  {
+    'folke/neodev.nvim',
+
+    config = true,
+
+    event = 'BufRead'
   },
 })
 
