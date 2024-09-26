@@ -24,7 +24,10 @@ function M.setup()
   M.set_keymap({'n', 'i', 'v'}, '<D-Right>', '$', 'i<Right>')
   M.set_keymap({'n', 'i', 'v'}, '<S-Up>', 'gg', 'i')
   M.set_keymap({'n', 'i', 'v'}, '<S-Down>', 'G', 'i')
+
   M.set_keymap({'n', 'i', 'v'}, '<C-d>', ':lua vim.lsp.buf.definition()<CR>', 'i')
+  M.set_keymap({'n', 'i', 'v'}, '<C-D-Left>', ':lua vim.diagnostic.get_prev()<CR>', 'i<Right>')
+  M.set_keymap({'n', 'i', 'v'}, '<C-D-Right>', ':lua vim.diagnostic.get_next()<CR>', 'i<Right>')
 
   --- Editing
   M.set_keymap({'n', 'v'}, '<D-x>', 'i<C-u><ESC>')
@@ -37,12 +40,15 @@ function M.setup()
   M.set_keymap({'v'}, 'y', '"*ygv')
   M.set_keymap({'n', 'v'}, 'p', '"*pi')
 
-  M.set_keymap({'v'}, 'a', '<ESC>:\'<,\'>norm! 0i')
-  M.set_keymap({'v'}, 'r', '<ESC>:\'<,\'>norm! x<CR>gv')
+  M.set_keymap({'v'}, 'a', ':\'<,\'>norm! 0i')
+  M.set_keymap({'v'}, 'r', ':\'<,\'>norm! x<CR>gv')
 
   --- Selecting
   M.set_keymap({'n', 'i'}, '<S-Left>', '<ESC>v')
   M.set_keymap({'n', 'i'}, '<S-Right>', '<ESC><Right>v')
+
+  M.set_keymap({'n', 'i', 'v'}, '<D-s>', 'viw')
+  M.set_keymap({'n', 'i', 'v'}, '<D-b>', 'viB')
 
   --- Other
   M.set_keymap({'n', 'i', 'v'}, '<C-w>', ':w!<CR>', 'i<Right>')

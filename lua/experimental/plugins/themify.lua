@@ -12,13 +12,10 @@ function M.setup()
     {
       'folke/tokyonight.nvim',
 
-      whitelist = {'tokyonight-night'}
+      -- whitelist = {'tokyonight-night'}
     },
-    {
-      'Yazeed1s/minimal.nvim',
-
-      whitelist = {'minimal-base16'}
-    }
+    'Yazeed1s/minimal.nvim',
+    'EdenEast/nightfox.nvim'
   })
 end
 

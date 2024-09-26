@@ -30,6 +30,8 @@ mv nvim ~/.config/nvim
 <Meta-Down>: Jump to the bottom of the buffer.
 <Control-D>: Goto definition.
 | Stand for "Definition".
+<Control-Meta-Left>: Goto the previous diagnostics.
+<Control-Meta-Right>: Goto the next diagnostics.
 
 - Editing -
 
@@ -52,6 +54,11 @@ mv nvim ~/.config/nvim
 
 <Shift-Left>: Start selecting in Visual mode.
 <Shift-Right>: Start selecting in Visual mode.
+
+<Meta-s>: Select the word under the cursor.
+| Stand for "Select".
+<Meta-b>: Select a block. ("{}") 
+| Stand for "Block"
 
 - Other -
 

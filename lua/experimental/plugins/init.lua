@@ -24,8 +24,6 @@ end
 require('lazy').setup({
   --- Colorscheme Manager
   {
-    dev = true,
-
     dir = '/Users/lmantw/Desktop/Programming/themify.nvim',
 
     config = function()
@@ -291,9 +289,9 @@ require('lazy').setup({
         mode = 'term',
 
         filetype = {
-          typescript = 'cd $dir && npm run start',
+          typescript = 'npm run start',
 
-          zig = 'zig run $fileName'
+          zig = 'cd $dir && zig run $fileName'
         }
       })
     end,
@@ -317,10 +315,8 @@ require('lazy').setup({
   {
     'folke/neodev.nvim',
 
-    config = true,
-
-    event = 'BufRead'
-  },
+    config = true
+  }
 })
 
 return M
