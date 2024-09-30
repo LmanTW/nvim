@@ -19,7 +19,7 @@ setKeymap({'n', 'i', 'v'}, '<D-Left>', '0')
 setKeymap({'n', 'i', 'v'}, '<D-Right>', '$', nil, '<Right>')
 setKeymap({'n', 'i', 'v'}, '<S-Up>', 'gg')
 setKeymap({'n', 'i', 'v'}, '<S-Down>', 'G')
-setKeymap({'n', 'i', 'v'}, '<C-b>', '<ESC>``', 'i')
+setKeymap({'n', 'i', 'v'}, '<C-b>', '``', 'i')
 
 -- Editing 
 

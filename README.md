@@ -55,10 +55,8 @@ mv nvim ~/.config/nvim
 <Shift-Left>: Start selecting in Visual mode.
 <Shift-Right>: Start selecting in Visual mode.
 
-<Meta-s>: Select the word under the cursor.
-| Stand for "Select".
-<Meta-b>: Select a block. ("{}") 
-| Stand for "Block"
+<Meta-b>: Select a block the cursor is in. ("{}") 
+| Stand for "Block".
 
 - Other -
 
