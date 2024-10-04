@@ -29,8 +29,6 @@ function M.setup()
   M.set_keymap({'n', 'i', 'v'}, '<C-D-Left>', ':lua vim.diagnostic.goto_prev()<CR>', 'i<Right>')
   M.set_keymap({'n', 'i', 'v'}, '<C-D-Right>', ':lua vim.diagnostic.goto_next()<CR>', 'i<Right>')
 
-  M.set_keymap({'n', 'i', 'v'}, '<C-s>', '/', 'i')
-
   --- Editing
   M.set_keymap({'n', 'v'}, '<D-x>', 'i<C-u><ESC>')
   vim.keymap.set('i', '<D-x>', '<C-u>')
