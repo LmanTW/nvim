@@ -23,7 +23,7 @@ function M.setup()
         local current_time = os.date('*t')
         local hour = current_time.hour
 
-        return table.concat({math.fmod(hour, 12), ':', current_time.min, ' ', hour > 12 and 'pm' or 'am'})
+        return table.concat({math.fmod(hour, 12), ':', current_time.min, ' ', hour > 12 and 'PM' or 'AM'})
       end}
     }
   })
