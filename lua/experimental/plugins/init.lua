@@ -21,20 +21,20 @@ vim.opt.rtp:prepend(M.lazy_path)
 function M.setup()
   require('lazy').setup({
     --- Colorscheme Manager
----    {
----      dir = '/Users/lmantw/Desktop/Programming/themify.nvim',
----
----      config = function()
----        require('experimental.plugins.themify').setup()
----      end
----    },
     {
-      'lmantw/themify.nvim',
+      dir = '/Users/lmantw/Desktop/Programming/themify.nvim',
 
       config = function()
         require('experimental.plugins.themify').setup()
       end
     },
+---    {
+---      'lmantw/themify.nvim',
+---
+---      config = function()
+---        require('experimental.plugins.themify').setup()
+---      end
+---    },
 
     --- Language Servers
     'neovim/nvim-lspconfig',
@@ -107,16 +107,23 @@ function M.setup()
 
       event = 'BufRead'
     },
+---    {
+---      'Exafunction/codeium.nvim',
+---
+---      dependencies = {
+---        { 'nvim-lua/plenary.nvim', lazy = true },
+---      },
+---
+---      config = true,
+---
+---      event = 'BufRead'
+---    },
     {
-      'Exafunction/codeium.nvim',
-
-      dependencies = {
-        { 'nvim-lua/plenary.nvim', lazy = true },
-      },
+      'folke/lazydev.nvim',
 
       config = true,
 
-      event = 'BufRead'
+      ft = {'lua'}
     },
 
     --- Editing
@@ -329,9 +336,9 @@ function M.setup()
       cmd = {'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop'},
     },
     {
-      'folke/neodev.nvim',
+      'andweeb/presence.nvim',
 
-      config = true
+      config = {}
     }
   })
 end
