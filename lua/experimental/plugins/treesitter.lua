@@ -10,7 +10,8 @@ local M = {
     'markdown',
     'json',
 
-    'zig'
+    'zig',
+    'c_sharp'
   }
 }
 

@@ -324,6 +324,11 @@ function M.setup()
 
     --- Other
     {
+      'andweeb/presence.nvim',
+
+      config = {}
+    },
+    {
       'iamcco/markdown-preview.nvim',
 
       build = 'cd app && npm install',
@@ -336,9 +341,20 @@ function M.setup()
       cmd = {'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop'},
     },
     {
-      'andweeb/presence.nvim',
+      'michaelrommel/nvim-silicon',
 
-      config = {}
+      config = {
+        theme = 'DarkNeon',
+        background_image = vim.fs.normalize(vim.fs.joinpath(debug.getinfo(1, 'S').source:sub(2), '../../assets/background.jpeg')),
+
+        language = function()
+          return vim.bo.filetype
+        end,
+
+        to_clipboard = true
+      },
+
+      cmd = {'Silicon'}
     }
   })
 end

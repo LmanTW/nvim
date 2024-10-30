@@ -10,7 +10,8 @@ local M = {
     'marksman',
     'jsonls',
 
-    'zls'
+    'zls',
+    'csharp_ls'
   }
 }
 

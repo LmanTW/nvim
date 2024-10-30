@@ -9,7 +9,6 @@ function M.setup()
 
        branch = 'master'
     },
-    'mellow-theme/mellow.nvim',
     {
       'folke/tokyonight.nvim',
 
