@@ -56,6 +56,8 @@ function M.setup()
 
   M.set_keymap({'n', 'i', 'v'}, '<C-e>', '<ESC>i')
   M.set_keymap({'n', 'i', 'v'}, '<C-v>', 'v')
+
+  M.set_keymap({'t'}, '<ESC>', '<C-\\><C-n>')
 end
 
 return M

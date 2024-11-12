@@ -13,8 +13,8 @@ function M.setup()
       'folke/tokyonight.nvim',
 
       whitelist = {'tokyonight-night'}
-    }
-    --- "bettervim/yugen.nvim"
+    },
+    -- 'yorumicolors/yorumi.nvim'
   })
 end
 

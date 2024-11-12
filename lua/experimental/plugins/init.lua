@@ -28,13 +28,13 @@ function M.setup()
         require('experimental.plugins.themify').setup()
       end
     },
----    {
----      'lmantw/themify.nvim',
----
----      config = function()
----        require('experimental.plugins.themify').setup()
----      end
----    },
+--    {
+--      'lmantw/themify.nvim',
+--
+--      config = function()
+--        require('experimental.plugins.themify').setup()
+--      end
+--    },
 
     --- Language Servers
     'neovim/nvim-lspconfig',
@@ -292,7 +292,7 @@ function M.setup()
         require('toggleterm').setup({
           open_mapping = '<C-t>',
 
-  				size = 15
+  				size = 20
   			})
   		end,
 
