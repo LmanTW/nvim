@@ -43,7 +43,7 @@ mv nvim ~/.config/nvim
 
 <Meta-z>: Undo.
 <y>: Copy the selected content. (Visual mode)
-<p>: Past. (Normal and Visual mode, use system shortcut in Insert mode.)
+<p>: Paste. (Normal and Visual mode, use system shortcut in Insert mode.)
 
 <a>: Add to the start of every selected lines. (Visual mode)
 | Stand for "Add".
@@ -75,8 +75,8 @@ mv nvim ~/.config/nvim
 <Meta-Down>: Scroll down.
 <Alt-Left>: Switch to the previous tab.
 <Alt-Right>: Switch to the next tab.
-<Alt-[>: Move the tab to the left.
-<Alt-]>: Move the tab to the right.
+<Alt-Meta-Left>: Move the tab to the left.
+<Alt-Meta-Right>: Move the tab to the right.
 <Alt-Up>: Focus on the current tab.
 <Alt-Down>: Delete the current tab.
 <Control-f>: Focus on the file explorer.

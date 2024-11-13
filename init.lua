@@ -1,1 +1,1 @@
-require('experimental')
+require('main')

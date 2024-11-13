@@ -9,12 +9,22 @@ function M.setup()
 
        branch = 'master'
     },
+      {
+      'comfysage/evergarden',
+
+      branch = 'mega',
+
+      before = function()
+        require('evergarden').setup({
+          contrast_dark = 'hard'
+        })
+      end
+    },
     {
       'folke/tokyonight.nvim',
 
       whitelist = {'tokyonight-night'}
-    },
-    -- 'yorumicolors/yorumi.nvim'
+    }
   })
 end
 

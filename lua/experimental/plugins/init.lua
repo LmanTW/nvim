@@ -200,8 +200,8 @@ function M.setup()
 
         Keymaps.set_keymap({'n', 'i', 'v'}, '<A-Left>', ':BufferPrevious<CR>', 'i')
         Keymaps.set_keymap({'n', 'i', 'v'}, '<A-Right>', ':BufferNext<CR>', 'i')
-        Keymaps.set_keymap({'n', 'i', 'v'}, '“', ':BufferMovePrevious<CR>', 'i')
-        Keymaps.set_keymap({'n', 'i', 'v'}, '‘', ':BufferMoveNext<CR>', 'i')
+        Keymaps.set_keymap({'n', 'i', 'v'}, '<A-D-Left>', ':BufferMovePrevious<CR>', 'i')
+        Keymaps.set_keymap({'n', 'i', 'v'}, '<A-D-Right>', ':BufferMoveNext<CR>', 'i')
         Keymaps.set_keymap({'n', 'i', 'v'}, '<A-Up>', ':BufferPrevious<CR>:BufferNext<CR>', 'i')
         Keymaps.set_keymap({'n', 'i', 'v'}, '<A-Down>', ':BufferDelete<CR>', 'i')
       end,
