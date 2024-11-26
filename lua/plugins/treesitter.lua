@@ -4,18 +4,14 @@ local M = {
     'javascript', 'typescript',
     'html', 'css',
 
-    'python',
-    'lua',
+    'lua', 'python',
+    'zig', 'c_sharp',
 
-    'markdown',
-    'json',
-
-    'zig',
-    'c_sharp'
+    'json'
   }
 }
 
---- Setup Treesitter
+--- Setup Treesitter.
 --- @return nil
 function M.setup()
   require('nvim-treesitter.configs').setup({

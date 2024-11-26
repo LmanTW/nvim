@@ -2,7 +2,7 @@ local M = {
   width = 35
 }
 
---- Setup Cmp
+--- Setup Nvim-Cmp.
 --- @return nil
 function M.setup()
   local cmp = require('cmp')
@@ -24,7 +24,7 @@ function M.setup()
 
     mapping = cmp.mapping.preset.insert({
 	  	['<CR>'] = cmp.mapping.abort(),
-  		['<Tab>'] = cmp.mapping.confirm({ select = true })
+  		['<Tab>'] = cmp.mapping.confirm({ select = true }),
     }),
 
     completion = {
@@ -47,10 +47,8 @@ function M.setup()
     }
   })
 
-  local servers = require('experimental.plugins.mason').servers
+  local servers = require('plugins.mason').servers
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-  capabilities.textDocument.completion.completionItem.snippetSupport = false
 
   for i = 1, #servers do
     require('lspconfig')[servers[i]].setup({
