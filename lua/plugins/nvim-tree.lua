@@ -15,7 +15,7 @@ function M.setup()
     },
 
     filters = {
-      custom = {'.DS_Store'}
+      custom = {'.DS_Store', '__pycache__'}
     },
 
     view = {

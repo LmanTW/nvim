@@ -46,7 +46,9 @@ function M.setup()
 
       config = function()
         require('plugins.treesitter').setup()
-      end
+      end,
+
+      event = 'BufRead'
     },
     {
       'sontungexpt/better-diagnostic-virtual-text',
@@ -94,7 +96,7 @@ function M.setup()
         require('plugins.nvim-cmp').setup()
       end,
 
-      event = 'BufReadPre'
+      event = 'BufRead'
     },
 
     --- Navigation.
@@ -108,7 +110,9 @@ function M.setup()
 
         vim.keymap.set({'n', 'v'}, '<C-s>', ':HopWord<CR>')
         vim.keymap.set('i', '<C-s>', '<ESC>:HopWord<CR>')
-      end
+      end,
+
+      event = 'BufRead'
     },
 
     --- Media explorer.

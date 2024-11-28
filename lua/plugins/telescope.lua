@@ -5,7 +5,13 @@ local M = {}
 function M.setup()
   require('telescope').setup({
     defaults = {
-      file_ignore_patterns = {'node_modules'}
+      file_ignore_patterns = {'node_modules'},
+    },
+
+    pickers = {
+      find_files = {
+        previewer = false
+      }
     }
   })
 
