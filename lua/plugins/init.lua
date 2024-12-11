@@ -2,9 +2,9 @@ local lazy_path = vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy', 'lazy.nvim')
 
 if not vim.uv.fs_stat(lazy_path) then
   vim.fn.system({
-    "git", "clone",
-    "--filter=blob:none", "--branch=stable",
-    "https://github.com/folke/lazy.nvim.git",
+    'git', 'clone',
+    '--filter=blob:none', '--branch=stable',
+    'https://github.com/folke/lazy.nvim.git',
     lazy_path 
   })
 end
@@ -18,7 +18,7 @@ local M = {}
 --- Setup the plugins.
 --- @return nil
 function M.setup()
-  require("lazy").setup({
+  require('lazy').setup({
     --- Startup dashboard.
     {
       'folke/snacks.nvim',
@@ -67,6 +67,17 @@ function M.setup()
 
       event = 'BufRead'
     },
+    {
+      'folke/lazydev.nvim',
+
+      config = {
+        library = {
+          { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        },
+      },
+
+      ft = 'lua'
+    },
 
     --- Editing.
     {
@@ -113,6 +124,11 @@ function M.setup()
       end,
 
       event = 'BufRead'
+    },
+    {
+      'petertriho/nvim-scrollbar',
+
+      config = true
     },
 
     --- Media explorer.
@@ -171,20 +187,28 @@ function M.setup()
     },
 
     --- Colorscheme manager.
----    {
----      'lmantw/themify.nvim',
----
----      config = function()
----        require('plugins.themify').setup()
----      end
----    },
     {
-      dir = '/Users/lmantw/Desktop/Programming/themify.nvim',
+      dir = '/Users/lmantw/Desktop/Programming/Projects/Primary/themify.nvim',
 
       config = function()
         require('plugins.themify').setup()
       end
-    },
+    }
+    ,
+    {
+      'iamcco/markdown-preview.nvim',
+
+      build = 'cd app && yarn install',
+
+      init = function()
+        -- vim.g.mkdp_filetypes = {'markdown'}
+        vim.g.mkdp_auto_close = false
+      end,
+
+      ft = {'markdown'},
+      cmd = {'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop'},
+    }
+
   })
 end
 

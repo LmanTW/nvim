@@ -10,9 +10,6 @@ local M = {
   }
 }
 
---- Just for Zig. 
-vim.g.zig_fmt_autosave = 0
-
 --- Setup Mason.
 --- @return nil
 function M.setup()

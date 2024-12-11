@@ -1,9 +1,38 @@
 local M = {}
 
+--- Open a folder.
+--- @param path string
+--- @return nil
+function openFolder(path)
+  local windows = vim.api.nvim_list_wins()
+
+  local window
+  local buffer
+
+  for i = 1, #windows do
+    window = windows[i]
+    buffer = vim.api.nvim_win_get_buf(window)
+
+    if vim.bo[buffer].filetype == 'snacks_dashboard' then
+      vim.cmd(table.concat({':NvimTreeOpen', path}, ' '))
+      vim.fn.chdir(path)
+
+      vim.api.nvim_win_close(window, false)
+
+      return
+    end
+  end
+end
+
 --- Setup Snacks.
 --- @return nil
 function M.setup()
-  require('snacks').setup({
+  local Snacks = require('snacks')
+
+  Snacks.toggle.profiler():map('<C-p>')
+  Snacks.toggle.profiler_highlights():map('<C-o>')
+
+  Snacks.setup({
     bigfile = {
       size = 64 * 1024
     },
@@ -14,7 +43,7 @@ function M.setup()
       sections = {
         { section = 'header', padding = 3 },
         { section = 'keys', padding = 1 },
-        { section = 'recent_files', padding = 3 },
+        { section = 'projects', padding = 3 },
         { section = 'startup' }
       },
 
@@ -26,56 +55,19 @@ function M.setup()
 
             key = 'f',
             action = function()
-              local windows = vim.api.nvim_list_wins()
-
-              local window
-              local buffer
-          
-              for i = 1, #windows do
-                window = windows[i]
-                buffer = vim.api.nvim_win_get_buf(window)
-          
-                if vim.bo[buffer].filetype == 'snacks_dashboard' then
-                  vim.cmd(':NvimTreeOpen')
-                  vim.api.nvim_win_close(window, false)
-          
-                  return
-                end
-              end
+              openFolder('./')
             end
           },
           {
             icon = ' ',
             desc = 'Config',
 
-            key = 'c', 
+            key = 'c',
             action = function()
-              local windows = vim.api.nvim_list_wins()
-
-              local window
-              local buffer
-          
-              for i = 1, #windows do
-                window = windows[i]
-                buffer = vim.api.nvim_win_get_buf(window)
-          
-                if vim.bo[buffer].filetype == 'snacks_dashboard' then
-                  vim.cmd(':NvimTreeOpen ~/.config/nvim')
-                  vim.api.nvim_win_close(window, false)
-          
-                  return
-                end
-              end
+              openFolder(vim.fn.stdpath('config'))
             end
-          },
-          {
-            icon = ' ',
-            desc = 'Quit',
-
-            key = 'q',
-            action = ':qa'
-          },
-        },
+          }
+        }
       }
     },
 

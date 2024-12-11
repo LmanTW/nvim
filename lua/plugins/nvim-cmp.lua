@@ -15,7 +15,7 @@ function M.setup()
       { name = 'nvim_lsp' },
       { name = 'nvim_lsp_signature_help' },
       { name = 'buffer' },
-      -- { name = 'codeium' }
+      { name = 'lazydev' }
     }),
 
     performance = {
@@ -50,10 +50,23 @@ function M.setup()
   local servers = require('plugins.mason').servers
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+  --- Just for Zig. 
+  vim.g.zig_fmt_autosave = 0
+
   for i = 1, #servers do
-    require('lspconfig')[servers[i]].setup({
-      capabilities = capabilities
-    })
+    if servers[i] == 'zls' then
+      local zig_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      zig_capabilities.textDocument.completion.completionItem.snippetSupport = false
+
+      require('lspconfig')['zls'].setup({
+        capabilities = zig_capabilities
+      })
+    else
+      require('lspconfig')[servers[i]].setup({
+        capabilities = capabilities
+      })
+    end
   end
 end
 

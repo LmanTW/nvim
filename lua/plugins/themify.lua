@@ -4,6 +4,8 @@ local M = {}
 --- @return nil
 function M.setup()
   require('themify').setup({
+    activity = true,
+
     {
       'sho-87/kanagawa-paper.nvim',
 

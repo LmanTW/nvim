@@ -53,7 +53,7 @@ function M.setup()
   end, Keymaps.options)
 
   vim.keymap.set({'n', 'v'}, '<A-Down>', ':BufferClose<CR>', Keymaps.options)
-  vim.keymap.set('i', '<A-Down>', ':BufferClose<CR>i', Keymaps.options)
+  vim.keymap.set('i', '<A-Down>', '<ESC>:BufferClose<CR>i', Keymaps.options)
 end
 
 return M
