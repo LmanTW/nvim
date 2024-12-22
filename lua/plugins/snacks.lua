@@ -34,6 +34,7 @@ function M.setup()
 
   Snacks.setup({
     bigfile = {
+      notify = false,
       size = 64 * 1024
     },
 

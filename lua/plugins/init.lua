@@ -5,7 +5,7 @@ if not vim.uv.fs_stat(lazy_path) then
     'git', 'clone',
     '--filter=blob:none', '--branch=stable',
     'https://github.com/folke/lazy.nvim.git',
-    lazy_path 
+    lazy_path
   })
 end
 
@@ -112,15 +112,20 @@ function M.setup()
 
     --- Navigation.
     {
-      'phaazon/hop.nvim',
-
-      branch = 'v2',
+      'folke/flash.nvim',
 
       config = function()
-        require('hop').setup()
+        require('flash').setup({
+          labels = 'qwerasdf',
 
-        vim.keymap.set({'n', 'v'}, '<C-s>', ':HopWord<CR>')
-        vim.keymap.set('i', '<C-s>', '<ESC>:HopWord<CR>')
+          modes = {
+            char = {
+              enabled = false
+            }
+          }
+        })
+
+        vim.keymap.set({'n', 'i', 'v'}, '<C-s>', require("flash").jump)
       end,
 
       event = 'BufRead'
@@ -128,7 +133,9 @@ function M.setup()
     {
       'petertriho/nvim-scrollbar',
 
-      config = true
+      config = true,
+
+      event = 'VeryLazy'
     },
 
     --- Media explorer.
@@ -153,7 +160,10 @@ function M.setup()
 
       config = function()
         require('plugins.telescope').setup()
-      end
+      end,
+
+      event = 'BufRead',
+      keys = '<C-g>'
     },
 
     --- Tabline.
@@ -166,7 +176,9 @@ function M.setup()
 
       config = function()
         require('plugins.barbar').setup()
-      end
+      end,
+
+      event = 'VeryLazy'
     },
 
     --- Terminal.
@@ -175,7 +187,7 @@ function M.setup()
 
       config = function()
         require('toggleterm').setup({
-          open_mapping = '<C-t>',
+          open_mapping = '<c-t>',
 
           direction = 'float',
 
@@ -183,7 +195,10 @@ function M.setup()
             border = 'rounded'
           }
         })
-      end
+      end,
+
+      event = 'BufRead',
+      keys = '<C-t>'
     },
 
     --- Colorscheme manager.
@@ -193,22 +208,27 @@ function M.setup()
       config = function()
         require('plugins.themify').setup()
       end
-    }
-    ,
+    },
+
+    --- Other.
+    {
+      'andweeb/presence.nvim',
+
+      config = {},
+
+      event = 'BufRead'
+    },
     {
       'iamcco/markdown-preview.nvim',
 
       build = 'cd app && yarn install',
 
       init = function()
-        -- vim.g.mkdp_filetypes = {'markdown'}
         vim.g.mkdp_auto_close = false
       end,
 
-      ft = {'markdown'},
-      cmd = {'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop'},
+      ft = {'markdown'}
     }
-
   })
 end
 
