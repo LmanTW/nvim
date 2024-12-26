@@ -14,6 +14,10 @@ vim.o.shiftwidth = 2
 vim.opt.backupdir = vim.fs.joinpath(vim.fn.stdpath('data'), 'backup')
 vim.opt.backup = true
 
+--- Options for searching.
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 local signs = {
   DiagnosticSignHint = ' ',
   DiagnosticSignWarn = ' ',
@@ -26,14 +30,6 @@ for hightlight, icon in pairs(signs) do
 end
 
 vim.loader.enable(true)
-
--- vim.opt.rtp:append(vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy', 'snacks.nvim'))
--- 
--- require('snacks.profiler').startup({
---   startup = {
---     event = 'VimEnter'
---   }
--- })
 
 require('keymaps').setup()
 require('plugins').setup()

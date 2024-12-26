@@ -118,6 +118,10 @@ function M.setup()
         require('flash').setup({
           labels = 'qwerasdf',
 
+          label = {
+            uppercase = false
+          },
+
           modes = {
             char = {
               enabled = false
