@@ -7,22 +7,23 @@ function M.setup()
     activity = true,
 
     {
-      'sho-87/kanagawa-paper.nvim',
-
-      branch = 'master'
-    },
-    {
       'comfysage/evergarden',
 
       branch = 'mega',
 
       before = function()
-        require('evergarden').setup({
-          contrast_dark = 'hard'
-        })
+        vim.g.everforest_background = 'hard'
+        vim.g.everforest_better_performance = 1
       end
     },
-    'nyoom-engineering/oxocarbon.nvim'
+    {
+      'sainnhe/gruvbox-material',
+
+      before = function()
+        vim.g.gruvbox_material_background = 'hard'
+        vim.g.gruvbox_material_better_performance = 1
+      end
+    }
   })
 end
 

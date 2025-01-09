@@ -5,6 +5,7 @@ local M = {
 
     'lua_ls', 'pyright',
     'zls', 'csharp_ls',
+    'clangd',
 
     'jsonls'
   }
@@ -15,7 +16,8 @@ local M = {
 function M.setup()
   require('mason').setup()
   require('mason-lspconfig').setup({
-    ensure_installed = M.servers
+    ensure_installed = M.servers,
+    automatic_installation = true
   })
 end
 

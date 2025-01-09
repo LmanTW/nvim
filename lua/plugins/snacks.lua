@@ -72,10 +72,6 @@ function M.setup()
       }
     },
 
-    lazygit = {
-      enabled = true,
-    },
-
     styles = {
       dashboard = {
         bo = {

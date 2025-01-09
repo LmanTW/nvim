@@ -60,7 +60,7 @@ function M.setup()
           inline = false
         })
 
-        vim.keymap.set({'n', 'i', 'v'}, '<C-z>', function()
+        vim.keymap.set({ 'n', 'i', 'v' }, '<C-z>', function()
           vim.diagnostic.enable(not vim.diagnostic.is_enabled())
         end, Keymaps.options)
       end,
@@ -99,8 +99,8 @@ function M.setup()
 
       dependencies = {
         { 'hrsh7th/cmp-nvim-lsp', lazy = true },
-        { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
-        { 'hrsh7th/cmp-buffer', lazy = true }
+        { 'hrsh7th/cmp-buffer', lazy = true },
+        { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true }
       },
 
       config = function()
@@ -129,7 +129,7 @@ function M.setup()
           }
         })
 
-        vim.keymap.set({'n', 'i', 'v'}, '<C-s>', require("flash").jump)
+        vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', require("flash").jump)
       end,
 
       event = 'BufRead'
@@ -231,7 +231,7 @@ function M.setup()
         vim.g.mkdp_auto_close = false
       end,
 
-      ft = {'markdown'}
+      ft = { 'markdown' }
     }
   })
 end
