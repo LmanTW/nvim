@@ -1,9 +1,11 @@
+local Keymaps = require('keymaps')
+
 local M = {}
 
 --- Open a folder.
 --- @param path string
 --- @return nil
-function openFolder(path)
+local function open_folder(path)
   local windows = vim.api.nvim_list_wins()
 
   local window
@@ -56,7 +58,7 @@ function M.setup()
 
             key = 'f',
             action = function()
-              openFolder('./')
+              open_folder('./')
             end
           },
           {
@@ -65,25 +67,40 @@ function M.setup()
 
             key = 'c',
             action = function()
-              openFolder(vim.fn.stdpath('config'))
+              open_folder(vim.fn.stdpath('config'))
             end
           }
         }
       }
     },
 
-    styles = {
-      dashboard = {
-        bo = {
-          bufhidden = 'wipe',
-          buftype = 'nofile',
-          filetype = 'snacks_dashboard',
-          swapfile = false,
-          undofile = false,
+    picker = {
+      win = {
+        input = {
+          keys = {
+            ['<Esc>'] = { 'close', mode = {'n', 'i', 'v'}},
+            ['<Space>'] = { 'confirm', mode = {'n', 'i', 'v'}},
+
+            ['<Up>'] = { 'list_up', mode = {'n', 'i', 'v'}},
+            ['<Down>'] = { 'list_down', mode = {'n', 'i', 'v'}},
+
+            ['<S-Up>'] = { 'list_top', mode = {'n', 'i', 'v'}},
+            ['<S-Down>'] = { 'list_bottom', mode = {'n', 'i', 'v'}}
+          }
         }
       }
     }
   })
+
+  vim.keymap.set({'n', 'i', 'v'}, '<C-g>', function()
+    Snacks.picker({
+      finder = 'files',
+      format = 'file',
+
+      hidden = true,
+      ignored = false
+    })
+  end)
 end
 
 return M

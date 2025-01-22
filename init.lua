@@ -29,7 +29,7 @@ for hightlight, icon in pairs(signs) do
   vim.fn.sign_define(hightlight, { text = icon, texthl = hightlight, numhl = hightlight })
 end
 
-vim.loader.enable(true)
+vim.loader.enable()
 
 require('keymaps').setup()
 require('plugins').setup()

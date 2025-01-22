@@ -109,6 +109,17 @@ function M.setup()
 
       event = 'BufRead'
     },
+    {
+      'Exafunction/codeium.nvim',
+
+      dependencies = {
+        { 'nvim-lua/plenary.nvim', lazy = true }
+      },
+
+      config = true,
+
+      event = 'BufRead'
+    },
 
     --- Navigation.
     {
@@ -156,21 +167,24 @@ function M.setup()
       end
     },
     {
-      'nvim-telescope/telescope.nvim',
+      -- 'KaitoMuraoka/websearcher.nvim',
 
-      dependencies = {
-        { 'nvim-lua/plenary.nvim', lazy = true }
-      },
+      dir = '/Users/lmantw/Desktop/Programming/Projects/Primary/websearcher.nvim',
 
-      config = function()
-        require('plugins.telescope').setup()
+      init = function()
+        vim.keymap.set({'n', 'i', 'v'}, '<C-b>', function()
+          vim.cmd('Websearch')
+        end)
       end,
 
-      event = 'BufRead',
-      keys = '<C-g>'
+      config = {
+        search_engine = 'Google'
+      }, 
+
+      cmd = 'Websearch'
     },
 
-    --- Tabline.
+    --- Decoration.
     {
       'romgrk/barbar.nvim',
 
@@ -184,14 +198,27 @@ function M.setup()
 
       event = 'VeryLazy'
     },
+    {
+      'nvim-lualine/lualine.nvim',
+
+      config = function()
+        require('plugins.lualine').setup()
+      end
+    },
 
     --- Terminal.
     {
       'akinsho/toggleterm.nvim',
 
+      init = function()
+        vim.keymap.set({'n', 'i', 'v'}, '<C-t>', function()
+          vim.cmd('ToggleTerm')
+        end)
+      end,
+
       config = function()
         require('toggleterm').setup({
-          open_mapping = '<c-t>',
+          open_mapping = '<C-t>',
 
           direction = 'float',
 
@@ -201,8 +228,7 @@ function M.setup()
         })
       end,
 
-      event = 'BufRead',
-      keys = '<C-t>'
+      cmd = 'ToggleTerm'
     },
 
     --- Colorscheme manager.
