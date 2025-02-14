@@ -7,16 +7,15 @@ local M = {
 function M.setup()
   local cmp = require('cmp')
 
-  local abbr_length
-  local kind_length
+  local kind, kind_length
+  local abbr, abbr_length
 
   cmp.setup({
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'nvim_lsp_signature_help' },
       { name = 'buffer' },
-      { name = 'lazydev' },
-      { name = 'codeium' }
+      { name = 'lazydev' }
     }),
 
     performance = {
@@ -34,15 +33,16 @@ function M.setup()
 
     formatting = {
       format = function(_, item)
-        item.kind = table.concat({'[', item.kind, ']'})
-
-        abbr_length = item.abbr:len()
+        kind = table.concat({'[', item.kind, ']'})
         kind_length = item.kind:len()
 
+        abbr = item.abbr
+        abbr_length = item.abbr:len()
+
         if abbr_length > M.width - (kind_length + 4) then
-          return { abbr = table.concat({item.abbr:sub(0, M.width - (kind_length + 4)), '... ', item.kind}) }
+          return { abbr = table.concat({abbr:sub(0, M.width - (kind_length + 4)), '... ', kind}) }
         else
-          return { abbr = table.concat({item.abbr, string.rep(' ', M.width - (abbr_length + kind_length)), item.kind}) }
+          return { abbr = table.concat({abbr, string.rep(' ', M.width - (abbr_length + kind_length)), kind}) }
         end
       end
     }
@@ -59,13 +59,9 @@ function M.setup()
       local zig_capabilities = require('cmp_nvim_lsp').default_capabilities()
       zig_capabilities.textDocument.completion.completionItem.snippetSupport = false
 
-      require('lspconfig')['zls'].setup({
-        capabilities = zig_capabilities
-      })
+      require('lspconfig')['zls'].setup({ capabilities = zig_capabilities })
     else
-      require('lspconfig')[servers[i]].setup({
-        capabilities = capabilities
-      })
+      require('lspconfig')[servers[i]].setup({ capabilities = capabilities })
     end
   end
 end

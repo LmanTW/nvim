@@ -7,6 +7,11 @@ function M.setup()
     activity = true,
 
     {
+      'folke/tokyonight.nvim',
+
+       whitelist = {'tokyonight-night'}
+    },
+    {
       'comfysage/evergarden',
 
       branch = 'mega',
@@ -23,8 +28,7 @@ function M.setup()
         vim.g.gruvbox_material_background = 'hard'
         vim.g.gruvbox_material_better_performance = 1
       end
-    },
-    'nyoom-engineering/oxocarbon.nvim'
+    }
   })
 end
 

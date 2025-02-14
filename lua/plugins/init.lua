@@ -109,17 +109,6 @@ function M.setup()
 
       event = 'BufRead'
     },
-    {
-      'Exafunction/codeium.nvim',
-
-      dependencies = {
-        { 'nvim-lua/plenary.nvim', lazy = true }
-      },
-
-      config = true,
-
-      event = 'BufRead'
-    },
 
     --- Navigation.
     {
@@ -167,9 +156,7 @@ function M.setup()
       end
     },
     {
-      -- 'KaitoMuraoka/websearcher.nvim',
-
-      dir = '/Users/lmantw/Desktop/Programming/Projects/Primary/websearcher.nvim',
+      'KaitoMuraoka/websearcher.nvim',
 
       init = function()
         vim.keymap.set({'n', 'i', 'v'}, '<C-b>', function()
@@ -239,6 +226,82 @@ function M.setup()
         require('plugins.themify').setup()
       end
     },
+--    {
+--      dir = '/Users/lmantw/Desktop/Programming/Projects/Primary/themify-new.nvim',
+--
+--      config = function()
+--        require('themify').setup({
+--          {
+--              "mcchrish/zenbones.nvim",
+--              before = function()
+--                  vim.g.bones_compat = 1
+--                  vim.g.lightness = "dim"
+--                  vim.g.darkness = "stark"
+--                  vim.g.solid_float_border = true
+--                  vim.g.colorize_diagnostic_underline_text = true
+--              end,
+--              blacklist = {
+--                  "randombones",
+--                  "zenbones",
+--                  "forestbones",
+--                  "seoulbones",
+--                  "nordbones",
+--                  "zenburned",
+--              },
+--          },
+--          "Hiroya-W/sequoia-moonlight.nvim",
+--          {
+--              "slugbyte/lackluster.nvim",
+--              blacklist = { "lackluster" },
+--          },
+--          {
+--              "tek256/simple-dark",
+--              blacklist = { "simple-dark-transparent" },
+--          },
+--          { "aktersnurra/no-clown-fiesta.nvim" },
+--          { "aliqyan-21/darkvoid.nvim" },
+--          {
+--              "cvigilv/patana.nvim",
+--              branch = "develop",
+--              before = function()
+--                  vim.g.patana_high_contrast = true
+--                  vim.g.patana_colored_statusline = true
+--                  vim.g.patana_oob_filetypes =
+--                      { "qf", "lazy", "mason", "help" }
+--              end,
+--          },
+--          {
+--              "wnkz/monoglow.nvim",
+--              blacklist = { "monoglow" },
+--          },
+--          { "bettervim/yugen.nvim" },
+--          { "kyazdani42/blue-moon" },
+--          { "rockerBOO/boo-colorscheme-nvim" },
+--          { "wadackel/vim-dogrun" },
+--          -- { "anAcc22/sakura.nvim" }, -- Missing lush
+--          { "Yazeed1s/oh-lucy.nvim" },
+--          {
+--              "Shadorain/shadotheme",
+--              blacklist = { "shado-legacy" },
+--          },
+--          { "blazkowolf/gruber-darker.nvim" },
+--          { "kvrohit/substrata.nvim" },
+--          { "mcauley-penney/ice-cave.nvim" },
+--          { "ramojus/mellifluous.nvim" },
+--          { "dgox16/oldworld.nvim" },
+--          { "ficcdaf/ashen.nvim" },
+--          { "datsfilipe/vesper.nvim" },
+--          -- { "rithikasilva/monoplus.nvim" },
+--          { "rithikasilva/sequoia-monochrome.nvim" },
+--          { "kdheepak/monochrome.nvim" },
+--          { "kvrohit/rasmus.nvim" },
+--          -- { "Wansmer/serenity.nvim" },
+--          -- Light Theme
+--          { "yorickpeterse/nvim-grey" },
+--          { "yorickpeterse/vim-paper" },
+--        })
+--      end
+--    },
 
     --- Other.
     {

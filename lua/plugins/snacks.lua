@@ -89,6 +89,12 @@ function M.setup()
           }
         }
       }
+    },
+    
+    image = {
+      markdown = {
+        enabled = false
+      }
     }
   })
 

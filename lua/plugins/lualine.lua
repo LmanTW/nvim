@@ -58,11 +58,7 @@ function M.setup()
       lualine_x = {'searchcount'},
       lualine_y = {
         function()
-          if usage == nil then
-            return ''
-          else
-            return table.concat({usage.today_minutes, ' Minute(s)'})
-          end
+          return usage == nil and '' or table.concat({usage.today_minutes, ' Minute(s)'})
         end
       },
       lualine_z = {
