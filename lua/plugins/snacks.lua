@@ -35,11 +35,6 @@ function M.setup()
   Snacks.toggle.profiler_highlights():map('<C-o>')
 
   Snacks.setup({
-    bigfile = {
-      notify = false,
-      size = 64 * 1024
-    },
-
     dashboard = {
       enabled = true,
 

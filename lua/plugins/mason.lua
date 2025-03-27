@@ -5,7 +5,7 @@ local M = {
 
     'lua_ls', 'pyright',
     'zls', 'csharp_ls',
-    'clangd',
+    'clangd', 'gopls',
 
     'jsonls'
   }
