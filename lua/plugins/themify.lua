@@ -9,12 +9,13 @@ function M.setup()
     {
       'folke/tokyonight.nvim',
 
-       whitelist = {'tokyonight-night'}
+       whitelist = {'tokyonight-night', 'tokyonight-day'}
     },
     {
       'comfysage/evergarden',
-
       branch = 'mega',
+
+      whitelist = {'evergarden'},
 
       before = function()
         vim.g.everforest_background = 'hard'

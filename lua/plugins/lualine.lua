@@ -54,7 +54,13 @@ function M.setup()
           padding = { left = 0, right = 1 }
         }
       },
-      lualine_c = {}, 
+      lualine_c = {
+        function()
+          local register = vim.fn.reg_recording()
+
+          return register:len() == 0 and '' or table.concat({'Recoding: @', register})
+        end
+      },
       lualine_x = {'searchcount'},
       lualine_y = {
         function()

@@ -38,6 +38,7 @@ function M.setup()
       local options = { buffer = buffer, nowait = true, silent = true }
 
       vim.keymap.set('n', '<Space>', api.node.open.edit, options)
+      vim.keymap.set('n', '<C-v>', api.node.open.vertical, options)
       vim.keymap.set('n', '<CR>', api.node.open.edit, options)
       vim.keymap.set('n', '<Tab>', api.tree.expand_all, options)
       vim.keymap.set('n', 'c', api.tree.change_root_to_node)
@@ -57,7 +58,7 @@ function M.setup()
       enable = true,
       debounce_delay = 100,
 
-      ignore_dirs = {'node_modules'}
+      ignore_dirs = {'node_modules', '.zig-cache'}
     }
   })
 

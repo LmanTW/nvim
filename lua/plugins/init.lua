@@ -30,11 +30,11 @@ function M.setup()
 
     --- Language support.
     {
-      'williamboman/mason.nvim',
+      'mason-org/mason.nvim',
 
       dependencies = {
         { 'neovim/nvim-lspconfig', lazy = true },
-        { 'williamboman/mason-lspconfig.nvim', lazy = true }
+        { 'mason-org/mason-lspconfig.nvim', lazy = true }
       },
 
       config = function()
@@ -169,21 +169,6 @@ function M.setup()
         require('plugins.nvim-tree').setup()
       end
     },
-    {
-      'KaitoMuraoka/websearcher.nvim',
-
-      init = function()
-        vim.keymap.set({'n', 'i', 'v'}, '<C-b>', function()
-          vim.cmd('Websearch')
-        end)
-      end,
-
-      config = {
-        search_engine = 'Google'
-      }, 
-
-      cmd = 'Websearch'
-    },
 
     --- Decoration.
     {
@@ -243,9 +228,51 @@ function M.setup()
 
     --- Other.
     {
-      'andweeb/presence.nvim',
+      "vyfor/cord.nvim",
 
-      event = 'BufRead'
+      build = ':Cord update',
+
+      config = {
+        editor = {
+          tooltip = "Neovim the Best"
+        },
+
+        display = {
+          swap_icons = true
+        },
+
+        text = {
+          workspace = '',
+          viewing = 'Viewing ${filename} (${workspace})',
+          editing = 'Editing ${filename} (${workspace})',
+          file_browser = 'Browsing files (${workspace})',
+          plugin_manager = 'Managing plugins (${workspace})',
+          lsp = 'Managing language servers (${workspace})',
+          docs = 'Reading documentations (${workspace})',
+          vcs = 'Committing changes (${workspace})',
+          notes = 'Taking notes (${workspace})',
+          debug = 'Debugging (${workspace})',
+          test  = 'Testing  (${workspace})',
+          diagnostics = 'Diagnosting (${workspace})',
+          game = 'Playing ${name} (${workspace})',
+          terminal = 'Viewing the termainl (${workspace})',
+          dashboard = 'Viewing the dashboard (${workspace})'
+        },
+
+        buttons = {
+          {
+            label = function(opts)
+              return opts.repo_url and 'View Repository' or 'Website'
+            end,
+
+            url = function(opts)
+                return opts.repo_url or 'https://example.com'
+            end
+          }
+        },
+
+        variables = true,
+      }
     },
     {
       'iamcco/markdown-preview.nvim',

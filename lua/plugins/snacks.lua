@@ -85,7 +85,7 @@ function M.setup()
         }
       }
     },
-    
+
     image = {
       markdown = {
         enabled = false
@@ -101,7 +101,41 @@ function M.setup()
       hidden = true,
       ignored = false
     })
-  end)
+  end, Keymaps.options)
+
+  vim.keymap.set({'n', 'i', 'v'}, '<C-b>', function()
+    Snacks.picker({
+      finder = 'grep',
+      format = 'file',
+
+      live = true,
+      regex = true
+    })
+  end, Keymaps.options)
+
+  vim.keymap.set({'n', 'i', 'v'}, '<C-v>', function()
+    Snacks.picker({
+      finder = 'lsp_symbols',
+      format = 'lsp_symbol',
+
+      filter = {
+        typescript = {
+          'Namespace',
+          'Class',
+          'Method',
+          'Function',
+          'Interface'
+        },
+
+        zig = {
+          'Constant',
+          'Function'
+        }
+      },
+
+      tree = true
+    })
+  end, Keymaps.options)
 end
 
 return M
