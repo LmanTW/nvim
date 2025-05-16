@@ -219,7 +219,7 @@ function M.setup()
 
     --- Colorscheme manager.
     {
-      dir = '/Users/lmantw/Desktop/Programming/Primary/themify.nvim',
+      dir = '/Users/lmantw/Desktop/Programming/themify.nvim',
 
       config = function()
         require('plugins.themify').setup()

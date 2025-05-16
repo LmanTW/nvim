@@ -56,12 +56,17 @@ function M.setup()
 
   for i = 1, #servers do
     if servers[i] == 'zls' then
-      local zig_capabilities = require('cmp_nvim_lsp').default_capabilities()
-      zig_capabilities.textDocument.completion.completionItem.snippetSupport = false
+      vim.lsp.config('zls', {
+        capabilities = capabilities,
 
-      require('lspconfig')['zls'].setup({ capabilities = zig_capabilities })
+        settings = {
+          zls = {
+            enable_argument_placeholders = false
+          }
+        }
+      })
     else
-      require('lspconfig')[servers[i]].setup({ capabilities = capabilities })
+      vim.lsp.config(servers[i], { capabilities = capabilities })
     end
   end
 end

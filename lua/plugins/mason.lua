@@ -4,8 +4,7 @@ local M = {
     'ts_ls', 'html', 'cssls',
 
     'lua_ls', 'pyright',
-    'zls', 'csharp_ls',
-    'clangd', 'gopls',
+    'zls', 'gopls',
 
     'jsonls'
   }
