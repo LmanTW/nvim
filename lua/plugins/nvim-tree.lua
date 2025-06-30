@@ -50,6 +50,9 @@ function M.setup()
       vim.keymap.set('n', 'a', api.fs.create, options)
       vim.keymap.set('n', 'r', api.fs.rename, options)
       vim.keymap.set('n', 'd', api.fs.remove, options)
+
+      vim.keymap.set('n', 'b', api.marks.toggle, options)
+      vim.keymap.set('n', 'm', api.marks.bulk.move, options)
    end,
 
     git = { enable = false },

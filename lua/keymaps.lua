@@ -23,6 +23,8 @@ function M.setup()
   vim.keymap.set({'n', 'i', 'v'}, '<C-D-Left>', function() vim.diagnostic.jump({ count = -1 }) end, M.options)
   vim.keymap.set({'n', 'i', 'v'}, '<C-D-Right>', function() vim.diagnostic.jump({ count = 1 }) end, M.options)
 
+  vim.keymap.set({'n', 'i', 'v'}, '<C-x>', '<ESC><Right>ni', M.options)
+
   --- Editing.
   vim.keymap.set('n', '<C-e>', 'i', M.options)
   vim.keymap.set('v', '<C-e>', '<ESC>i', M.options)
@@ -51,12 +53,14 @@ function M.setup()
   vim.keymap.set('i', '<S-Left>', '<ESC>v', M.options)
   vim.keymap.set('n', '<S-Right>', 'v', M.options)
   vim.keymap.set('i', '<S-Right>', '<ESC><Right>v', M.options)
-
-  vim.keymap.set('n', '<C-c>', ':q!<CR>', M.options)
-  vim.keymap.set({'i', 'v'}, '<C-c>', '<ESC>', M.options)
+  vim.keymap.set({'n', 'i', 'v'}, '<D-s>', '<ESC>viw', M.options)
 
   --- Terminal.
   vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', M.options)
+
+  --- Exit
+  vim.keymap.set('n', '<C-c>', ':q!<CR>', M.options)
+  vim.keymap.set({'i', 'v'}, '<C-c>', '<ESC>', M.options)
 end
 
 return M

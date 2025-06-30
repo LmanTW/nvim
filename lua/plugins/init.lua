@@ -70,7 +70,7 @@ function M.setup()
     {
       'j-hui/fidget.nvim',
 
-      config = {
+      opts = {
         notification = {
           window = {
             x_padding = 2,
@@ -84,7 +84,7 @@ function M.setup()
     {
       'folke/lazydev.nvim',
 
-      config = {
+      opts = {
         library = {
           { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
         },
@@ -122,6 +122,33 @@ function M.setup()
       end,
 
       event = 'BufRead'
+    },
+    {
+      'saecki/live-rename.nvim',
+
+      config = function()
+        local live_rename = require('live-rename')
+
+        live_rename.setup({
+          keys = {
+            submit = {
+                { "n", "<cr>" },
+                { "i", "<cr>" },
+                { "v", "<cr>" }
+            },
+
+            cancel = {
+                { "n", "<esc>" },
+                { "i", "<esc>" },
+                { "v", "<esc>" }
+            }
+          }
+        })
+
+        vim.keymap.set({'n', 'i', 'v'}, '<C-r>', function()
+          live_rename.rename({ insert = true , text = '' })
+        end, Keymaps.options)
+      end
     },
 
     --- Navigation.
@@ -232,7 +259,7 @@ function M.setup()
 
       build = ':Cord update',
 
-      config = {
+      opts = {
         editor = {
           tooltip = "Neovim the Best"
         },
@@ -254,7 +281,7 @@ function M.setup()
           debug = 'Debugging (${workspace})',
           test  = 'Testing  (${workspace})',
           diagnostics = 'Diagnosting (${workspace})',
-          game = 'Playing ${name} (${workspace})',
+          games = 'Playing ${name} (${workspace})',
           terminal = 'Viewing the termainl (${workspace})',
           dashboard = 'Viewing the dashboard (${workspace})'
         },
@@ -275,15 +302,23 @@ function M.setup()
       }
     },
     {
-      'iamcco/markdown-preview.nvim',
+      'toppair/peek.nvim',
 
-      build = 'cd app && yarn install',
+      build = 'deno task --quiet build:fast',
 
-      init = function()
-        vim.g.mkdp_auto_close = false
-      end,
+      config = function()
+        local peek = require('peek')
 
-      ft = { 'markdown' }
+        peek.setup({
+          app = 'browser'
+        })
+
+        vim.api.nvim_create_user_command('Peek', peek.open, {})
+      end
+    }
+  }, {
+    rocks = {
+      enabled = false
     }
   })
 end
