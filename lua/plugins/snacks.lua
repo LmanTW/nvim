@@ -136,6 +136,8 @@ function M.setup()
       tree = true
     })
   end, Keymaps.options)
+
+vim.keymap.set({'n', 'i', 'v'}, '<C-l>', Snacks.lazygit.open, Keymaps.options)
 end
 
 return M
