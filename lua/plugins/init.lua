@@ -302,19 +302,12 @@ function M.setup()
       }
     },
     {
-      'toppair/peek.nvim',
+      'MeanderingProgrammer/render-markdown.nvim',
 
-      build = 'deno task --quiet build:fast',
-
-      config = function()
-        local peek = require('peek')
-
-        peek.setup({
-          app = 'browser'
-        })
-
-        vim.api.nvim_create_user_command('Peek', peek.open, {})
-      end
+      dependencies = {
+        { 'nvim-treesitter/nvim-treesitter', lazy = true },
+        { 'nvim-tree/nvim-web-devicons', lazy = true }
+      }
     }
   }, {
     rocks = {
