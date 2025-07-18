@@ -92,6 +92,18 @@ function M.setup()
 
       ft = 'lua'
     },
+    {
+      'MeanderingProgrammer/render-markdown.nvim',
+
+      dependencies = {
+        { 'nvim-treesitter/nvim-treesitter', lazy = true },
+        { 'nvim-tree/nvim-web-devicons', lazy = true }
+      },
+
+      opts = {
+        latex = { enabled = false }
+      }
+    },
 
     --- Editing.
     {
@@ -164,9 +176,7 @@ function M.setup()
           },
 
           modes = {
-            char = {
-              enabled = false
-            }
+            char = { enabled = false }
           }
         })
 
@@ -232,12 +242,8 @@ function M.setup()
       config = function()
         require('toggleterm').setup({
           open_mapping = '<C-t>',
-
           direction = 'float',
-
-          float_opts = {
-            border = 'rounded'
-          }
+          float_opts = { border = 'rounded' }
         })
       end,
 
@@ -254,16 +260,13 @@ function M.setup()
     },
 
     --- Other.
+    "sindrets/diffview.nvim",
     {
       "vyfor/cord.nvim",
 
       build = ':Cord update',
 
       opts = {
-        editor = {
-          tooltip = "Neovim the Best"
-        },
-
         display = {
           swap_icons = true
         },
@@ -299,14 +302,6 @@ function M.setup()
         },
 
         variables = true,
-      }
-    },
-    {
-      'MeanderingProgrammer/render-markdown.nvim',
-
-      dependencies = {
-        { 'nvim-treesitter/nvim-treesitter', lazy = true },
-        { 'nvim-tree/nvim-web-devicons', lazy = true }
       }
     }
   }, {

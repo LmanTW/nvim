@@ -7,7 +7,7 @@ local M = {
     'lua', 'python',
     'zig', 'c_sharp',
 
-    'json'
+    'json', 'markdown'
   }
 }
 
