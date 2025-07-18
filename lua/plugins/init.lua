@@ -260,7 +260,6 @@ function M.setup()
     },
 
     --- Other.
-    "sindrets/diffview.nvim",
     {
       "vyfor/cord.nvim",
 
