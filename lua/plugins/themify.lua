@@ -13,7 +13,6 @@ function M.setup()
     },
     {
       'comfysage/evergarden',
-      branch = 'mega',
 
       whitelist = {'evergarden'},
 
