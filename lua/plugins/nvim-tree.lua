@@ -61,7 +61,7 @@ function M.setup()
       enable = true,
       debounce_delay = 100,
 
-      ignore_dirs = {'node_modules', '.zig-cache'}
+      ignore_dirs = {'node_modules', '.zig-cache', 'target'}
     }
   })
 

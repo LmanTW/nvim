@@ -9,7 +9,7 @@ function M.setup()
     {
       'folke/tokyonight.nvim',
 
-       whitelist = {'tokyonight-night', 'tokyonight-day'}
+       whitelist = {'tokyonight-night', 'tokyonight-day'},
     },
     {
       'comfysage/evergarden',

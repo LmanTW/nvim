@@ -31,8 +31,8 @@ end
 function M.setup()
   local Snacks = require('snacks')
 
-  Snacks.toggle.profiler():map('<C-p>')
-  Snacks.toggle.profiler_highlights():map('<C-o>')
+  --- Snacks.toggle.profiler():map('<C-p>')
+  --- Snacks.toggle.profiler_highlights():map('<C-o>')
 
   Snacks.setup({
     dashboard = {
@@ -90,6 +90,12 @@ function M.setup()
       markdown = {
         enabled = false
       }
+    },
+
+    bigfile = {
+      notify = false,
+      size = 256 * 1024,
+      line_length = 1024
     }
   })
 
@@ -137,7 +143,7 @@ function M.setup()
     })
   end, Keymaps.options)
 
-vim.keymap.set({'n', 'i', 'v'}, '<C-l>', Snacks.lazygit.open, Keymaps.options)
+  vim.keymap.set({'n', 'i', 'v'}, '<C-l>', Snacks.lazygit.open, Keymaps.options)
 end
 
 return M

@@ -52,8 +52,9 @@ function M.setup()
   local servers = require('plugins.mason').servers
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-  --- Just for Zig. 
+  --- Just for ZLS. 
   vim.g.zig_fmt_autosave = 0
+  vim.g.zig_fmt_parse_errors = 0
 
   for i = 1, #servers do
     if servers[i] == 'zls' then
@@ -62,6 +63,9 @@ function M.setup()
 
         settings = {
           zls = {
+            enable_build_on_save = true,
+
+            enable_snippets = false,
             enable_argument_placeholders = false
           }
         }

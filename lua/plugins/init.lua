@@ -206,6 +206,15 @@ function M.setup()
         require('plugins.nvim-tree').setup()
       end
     },
+    {
+      'stevearc/oil.nvim',
+
+      config = function()
+        require("oil").setup({
+          default_file_explorer = false
+        })
+      end
+    },
 
     --- Decoration.
     {
