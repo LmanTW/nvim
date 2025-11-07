@@ -270,7 +270,7 @@ function M.setup()
 
     --- Other.
     {
-      "vyfor/cord.nvim",
+      'vyfor/cord.nvim',
 
       build = ':Cord update',
 
@@ -311,6 +311,17 @@ function M.setup()
 
         variables = true,
       }
+    },
+    {
+      'nomad/nomad',
+
+      build = function()
+        local build = require("nomad.neovim.build")
+
+        build.builders.download_prebuilt():build(build.contexts.lazy())
+      end,
+
+      config = true
     }
   }, {
     rocks = {

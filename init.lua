@@ -4,7 +4,6 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_python3_provider = 0
 
-
 --- Options for the line nubmer.
 vim.o.fillchars = 'eob: '
 vim.o.number = true
@@ -38,6 +37,19 @@ end
 
 --- Enable the experimental loader.
 vim.loader.enable()
+
+--- Enable OSC52 clipboard support.
+vim.g.clipboard = {
+  name = 'osc52',
+  copy = {
+    ['+'] = function(lines, _) vim.fn.chansend(vim.v.stderr, '\x1b]52;c;' .. vim.fn.system('base64', table.concat(lines, '\n')) .. '\x07') end,
+    ['*'] = function(lines, _) vim.fn.chansend(vim.v.stderr, '\x1b]52;c;' .. vim.fn.system('base64', table.concat(lines, '\n')) .. '\x07') end,
+  },
+  paste = {
+    ['+'] = function() return { vim.fn.getreg('+') }, vim.fn.getregtype('+') end,
+    ['*'] = function() return { vim.fn.getreg('*') }, vim.fn.getregtype('*') end,
+  },
+}
 
 require('keymaps').setup()
 require('plugins').setup()
