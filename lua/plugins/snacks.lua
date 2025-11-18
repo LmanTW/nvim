@@ -74,7 +74,7 @@ function M.setup()
         input = {
           keys = {
             ['<Esc>'] = { 'close', mode = {'n', 'i', 'v'}},
-            ['<Space>'] = { 'confirm', mode = {'n', 'i', 'v'}},
+            ['<Space>'] = { 'confirm', mode = {'n', 'v'}},
 
             ['<Up>'] = { 'list_up', mode = {'n', 'i', 'v'}},
             ['<Down>'] = { 'list_down', mode = {'n', 'i', 'v'}},
