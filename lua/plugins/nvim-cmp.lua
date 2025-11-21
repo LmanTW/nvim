@@ -64,7 +64,7 @@ function M.setup()
         settings = {
           zls = {
             enable_build_on_save = true,
-            enable_snippets = false,
+            enable_argument_placeholders = false
           }
         }
       })
